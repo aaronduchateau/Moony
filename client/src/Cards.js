@@ -12,7 +12,7 @@ const data = [
 const COLORS = ['#56e2f6', '#00a0d0', '#FFBB28', '#FF8042'];
 
 const Cards = (props) => {
-        const { NFTData } = props;
+        const { NFTData, handleConnectSubmit, networkId } = props;
         const [topLevel, setTopLevel] = useState(null);
         const [subLevel, setSubLevel] = useState(null);
 
@@ -22,35 +22,23 @@ const Cards = (props) => {
             // drills down arbitrary 'N' levels
             setSubLevel(card.parentId);
         }
+
+        const screenSmallClass = window.screen.width < 950 ? "card-shell" : "card-shell-small";
         
         const returnCards = () => {
             let FlipTestHolder = [];
-            let isTopLevel = (topLevel === null);
-            _.each(isTopLevel ? NFTData : NFTData[topLevel], (item,index)=>{
-                console.log(item[1]);
-                if(isTopLevel){
-                    FlipTestHolder.push(<FlipTest setCurrentLevel={setCurrentLevel} card={item[1]}/>);
-                } else {
-                    FlipTestHolder.push(<FlipTest setCurrentLevel={setCurrentLevel} card={item}/>);
-                }
-                    
-                
-                //we are at the top level 
-                //if(item[index].parentId === null){
-                //    const card = item[index];
-                //    FlipTestHolder.push(
-                //        <FlipTest setCurrentLevel={setCurrentLevel} card={card}/>
-                //    );
-                //}
-                
+            //let isTopLevel = (topLevel === null);
+            _.each(NFTData, (item,index)=>{
+                FlipTestHolder.push(<FlipTest setCurrentLevel={setCurrentLevel} card={item} handleConnectSubmit={handleConnectSubmit} networkId={networkId}/>);
             })
             return FlipTestHolder;
             };
             return (
                 <div className="card-shell-container">
-                    <div className="card-shell">
+                    <div className={screenSmallClass}>
                         {returnCards()}
                     </div>
+                    
                 </div>
 
             );

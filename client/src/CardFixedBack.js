@@ -13,9 +13,7 @@ const COLORS = ['#56e2f6', '#00a0d0', '#FFBB28', '#FF8042'];
 
 const CardFixedBack = (props) => {
     const [photoView, setPhotoView] = useState(false);
-      const { handleFlip, setCurrentLevel, card } = props;
-      console.log('wat');
-      console.log(handleFlip);
+      const { handleFlip, setCurrentLevel, card, networkId } = props;
       const imgClick = (e)=> {
         e.preventDefault();
         e.stopPropagation();
@@ -33,10 +31,22 @@ const CardFixedBack = (props) => {
         setCurrentLevel(card);
       }
 
+      
+
       async function payWithMetamask(e,sender, receiver, strEther) {
         e.preventDefault();
         e.stopPropagation();
         console.log(`payWithMetamask(receiver=${receiver}, sender=${sender}, strEther=${strEther})`)
+        const networkIsEth = networkId === 1;
+        const networkIsBsc = networkId === 56;
+        
+        let price = '';
+        if(networkIsEth){
+          price = card.bnbPrice;
+        }
+        if(networkIsBsc){
+          price = card.ethPrice;
+        }
     
         let ethereum = window.ethereum;
     
@@ -51,12 +61,14 @@ const CardFixedBack = (props) => {
         const params = [{
             from: sender,
             to: receiver,
-            value: ethers.utils.parseUnits(strEther, 'ether').toHexString()
+            value: ethers.utils.parseUnits(price, 'ether').toHexString()
         }];
     
         const transactionHash = await provider.send('eth_sendTransaction', params)
         console.log('transactionHash is ' + transactionHash);
     }
+
+    
     
   
     

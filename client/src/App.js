@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import './App.css';
 import { ethers } from "ethers";
 import PreciousChickenToken from "./contracts/PreciousChickenToken.json";
@@ -6,46 +7,225 @@ import { Button, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Home';
 import Cards from './Cards';
+import {
+	BrowserRouter as Router,
+	Switch,
+	useLocation,
+	useHistory,
+	BrowserHistory,
+  } from "react-router-dom";
 
-const NFTData = [
+const NFTData  = [
+  {
+        'id': 'PQ4352',
+          'artistName': "Luca",
+        'pieceName': "Mooney Moon Bum",
+        'imgId': "nftImages/BumMoon.png",
+        'imgDesc': "As the moon gazes down upon you it’s bum wiggles hello.",
+        'ethPrice': "0.544",
+        'bnbPrice': "2.470",
+    },
 	{
-		1: {id: 1, parentId: null, topLevelId: 1, title: "House of the Hill", tagNum: "#E56778", segments: [20,30,10,40], img: 'https://photos.zillowstatic.com/fp/9333359fae71c6c3e7ea655f6a990f3f-cc_ft_1536.jpg' },
-		2: {id: 2, parentId: 1, topLevelId: 1, title: "House of the Hill", tagNum: "#E56778", segments: [50,50], img: 'https://photos.zillowstatic.com/fp/9333359fae71c6c3e7ea655f6a990f3f-cc_ft_1536.jpg'},
-		3: {id: 3, parentId: 1, topLevelId: 1, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/9333359fae71c6c3e7ea655f6a990f3f-cc_ft_1536.jpg' },
-		4: {id: 4, parentId: 1, topLevelId: 1, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/9333359fae71c6c3e7ea655f6a990f3f-cc_ft_1536.jpg' },
-		5: {id: 5, parentId: 1, topLevelId: 1, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/9333359fae71c6c3e7ea655f6a990f3f-cc_ft_1536.jpg' },
-		6: {id: 6, parentId: 2, topLevelId: 1, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/9333359fae71c6c3e7ea655f6a990f3f-cc_ft_1536.jpg' },
-		7: {id: 7, parentId: 2, topLevelId: 1, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/9333359fae71c6c3e7ea655f6a990f3f-cc_ft_1536.jpg' },
-	},
-	{
-		1: {id: 1, parentId: null, topLevelId: 2, title: "House of the Hill", tagNum: "#E56778", segments: [20,30,10,40], img: 'https://photos.zillowstatic.com/fp/f0dc4ad65b303f1f77aa5067a44f5733-cc_ft_1536.jpg' },
-		2: {id: 2, parentId: 1, topLevelId: 2, title: "House of the Hill", tagNum: "#E56778", segments: [50,50], img: 'https://photos.zillowstatic.com/fp/f0dc4ad65b303f1f77aa5067a44f5733-cc_ft_1536.jpg'},
-		3: {id: 3, parentId: 1, topLevelId: 2, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/f0dc4ad65b303f1f77aa5067a44f5733-cc_ft_1536.jpg' },
-		4: {id: 4, parentId: 1, topLevelId: 2, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/f0dc4ad65b303f1f77aa5067a44f5733-cc_ft_1536.jpg' },
-		5: {id: 5, parentId: 1, topLevelId: 2, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/f0dc4ad65b303f1f77aa5067a44f5733-cc_ft_1536.jpg' },
-	}, 
-	{
-		1: {id: 1, parentId: null, topLevelId: 3, title: "House of the Hill", tagNum: "#E56778", segments: [20,30,10,40], img: 'https://photos.zillowstatic.com/fp/6180c23d544b6b579d267a99e7457131-cc_ft_1536.jpg' },
-		2: {id: 2, parentId: 1, topLevelId: 3, title: "House of the Hill", tagNum: "#E56778", segments: [50,50], img: 'https://photos.zillowstatic.com/fp/6180c23d544b6b579d267a99e7457131-cc_ft_1536.jpg'},
-		3: {id: 3, parentId: 1, topLevelId: 3, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/6180c23d544b6b579d267a99e7457131-cc_ft_1536.jpg' },
-		4: {id: 4, parentId: 1, topLevelId: 3, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/6180c23d544b6b579d267a99e7457131-cc_ft_1536.jpg' },
-		5: {id: 5, parentId: 1, topLevelId: 3, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/6180c23d544b6b579d267a99e7457131-cc_ft_1536.jpg' },
-	},
-	{
-		1: {id: 1, parentId: null, topLevelId: 4, title: "House of the Hill", tagNum: "#E56778", segments: [20,30,10,40], img: 'https://photos.zillowstatic.com/fp/760fc6ae87a8c55a99d22608d6b51ef7-cc_ft_1536.jpg' },
-		2: {id: 2, parentId: 1, topLevelId: 4, title: "House of the Hill", tagNum: "#E56778", segments: [50,50], img: 'https://photos.zillowstatic.com/fp/760fc6ae87a8c55a99d22608d6b51ef7-cc_ft_1536.jpg'  },
-		3: {id: 3, parentId: 1, topLevelId: 4, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/760fc6ae87a8c55a99d22608d6b51ef7-cc_ft_1536.jpg'  },
-		4: {id: 4, parentId: 1, topLevelId: 4, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/760fc6ae87a8c55a99d22608d6b51ef7-cc_ft_1536.jpg'  },
-		5: {id: 5, parentId: 1, topLevelId: 4, title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/760fc6ae87a8c55a99d22608d6b51ef7-cc_ft_1536.jpg'  },
-	},
-	{
-		1: {id: 1, parentId: null, topLevelId: 5, title: "House of the Hill", tagNum: "#E56778", segments: [20,30,10,40], img: 'https://photos.zillowstatic.com/fp/f44d2a3601efc4ab0d706e6ad8f800d0-cc_ft_1536.jpg' },
-		2: {id: 2, parentId: 1, topLevelId: 5,  title: "House of the Hill", tagNum: "#E56778", segments: [50,50], img: 'https://photos.zillowstatic.com/fp/f44d2a3601efc4ab0d706e6ad8f800d0-cc_ft_1536.jpg' },
-		3: {id: 3, parentId: 1, topLevelId: 5,  title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/f44d2a3601efc4ab0d706e6ad8f800d0-cc_ft_1536.jpg' },
-		4: {id: 4, parentId: 1, topLevelId: 5,  title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/f44d2a3601efc4ab0d706e6ad8f800d0-cc_ft_1536.jpg' },
-		5: {id: 5, parentId: 1, topLevelId: 5,  title: "House of the Hill", tagNum: "#E56778", segments: [100], img: 'https://photos.zillowstatic.com/fp/f44d2a3601efc4ab0d706e6ad8f800d0-cc_ft_1536.jpg' },
-	},
+        'id': 'EG3923',
+          'artistName': "Tom JONES",
+        'pieceName': "Mooney's Holdup",
+        'imgId': "nftImages/MooneyHoldup.png",
+        'imgDesc': "This man needs the price of $MOONEY to pump, he has to feed his family some how.",
+        'ethPrice': "0.949",
+        'bnbPrice': "4.312",
+    },
+  {
+        'id': 'GR9201',
+          'artistName': "Vlad",
+        'pieceName': "Wagmi x Mooney",
+        'imgId': "nftImages/WAGMIXMOONEY.png",
+        'imgDesc': "Mooney may be the love child of the WAGMI Think Tank and Vlad, some say Mooney has Vlad’s eyes.",
+        'ethPrice': "0.848",
+        'bnbPrice': "3.850",
+    },
+  {
+        'id': 'PR9323',
+          'artistName': "Pepe Saiyan",
+        'pieceName': "Keep the Secret",
+        'imgId': "nftImages/KeepTheSecret.png",
+        'imgDesc': "agent#112341211 found a rogue NASA employee looking at MooneyHQ, no one can know Mooney is on the Moon.",
+        'ethPrice': "0.698",
+        'bnbPrice': "3.168",
+    },
+  {
+        'id': 'SR3432',
+          'artistName': "Tom JONES",
+        'pieceName': "Go Figure",
+        'imgId': "nftImages/GoFigure.png",
+        'imgDesc': "When Mooney’s are asked how they got to the Moon before everyone else they just shrug and say “Go Figure”.",
+        'ethPrice': "1.842",
+        'bnbPrice': "8.366",
+    },
+  {
+        'id': 'PR2333',
+          'artistName': "Luca",
+        'pieceName': "Retro Fashion",
+        'imgId': "nftImages/RetroFashion.png",
+        'imgDesc': "Since the beginning Mooney has lived on the Moon, fashion hasn’t changed much all that matters is the bum.",
+        'ethPrice': "0.248",
+        'bnbPrice': "1.124",
+    },
+  {
+        'id': 'SK9309',
+          'artistName': "WAGMI",
+        'pieceName': "Man Laying Egg",
+        'imgId': "nftImages/DaneLaysEgg.png",
+        'imgDesc': "Man laying a massive egg. The Man came first.",
+        'ethPrice': "0.257",
+        'bnbPrice': "1.168",
+    },
+  {
+        'id': 'NJ4532',
+          'artistName': "Tom JONES",
+        'pieceName': "When You’re Long On Mooney",
+        'imgId': "nftImages/CoolLongMooney.png",
+        'imgDesc': "Confident moonchad smoking a ciggie knowing Mooney will make him rich.",
+        'ethPrice': "0.306",
+        'bnbPrice': "1.390",
+    },
+  {
+        'id': 'TY3493',
+          'artistName': "Granola",
+        'pieceName': "Space Bums",
+        'imgId': "nftImages/BumInSpace.png",
+        'imgDesc': "Women submitting their behinds to the powerful moon in the sky.",
+        'ethPrice': "0.349",
+        'bnbPrice': "1.582",
+    },
+  {
+        'id': 'GH9023',
+          'artistName': "Pepe Saiyan",
+        'pieceName': "Drake Prefers Mooney",
+        'imgId': "nftImages/DrakeLikesMooney.png",
+        'imgDesc': "Drake expressing his exquisite taste for Mooney.",
+        'ethPrice': "0.303",
+        'bnbPrice': "1.374",
+    },
+  {
+        'id': 'KJ1390',
+          'artistName': "Pepe Saiyan",
+        'pieceName': "The Average Mooney Holder",
+        'imgId': "nftImages/200IQ.png",
+        'imgDesc': "A visual description comparing Mooney Holders to other moon tokens.",
+        'ethPrice': "0.264",
+        'bnbPrice': "1.198",
+    },
+  {
+        'id': 'KS2834',
+          'artistName': "Terpie",
+        'pieceName': "WAGMI Mooning The Internet",
+        'imgId': "nftImages/BigAssMoon.png",
+        'imgDesc': "WAGMI breaks the internet by mooning the cameraman.",
+        'ethPrice': "0.394",
+        'bnbPrice': "1.788",
+    },
+  {
+        'id': 'JS3892',
+          'artistName': "Terpie",
+        'pieceName': "Jiggle",
+        'imgId': "nftImages/jigJIG.png",
+        'imgDesc': "The main object of attraction is the bum if it is round like a moon it makes .",
+        'ethPrice': "0.529",
+        'bnbPrice': "2.400",
+    },
+  {
+        'id': 'NE2093',
+          'artistName': "Tom JONES",
+        'pieceName': "Moon Cheeks",
+        'imgId': "nftImages/MoonCheeks.png",
+        'imgDesc': "Cheeks made out of moon? Cheese?.",
+        'ethPrice': "0.181",
+        'bnbPrice': "0.822",
+    },
+  {
+        'id': 'QE3490',
+          'artistName': "Terpie",
+        'pieceName': "Freq Fox",
+        'imgId': "nftImages/Freq_Fox.jpg",
+        'imgDesc': "Inspired by the music of ST4RFOX.",
+        'ethPrice': "5.286",
+        'bnbPrice': "24.012",
+    },
+  {
+        'id': '54JASN',
+          'artistName': "Terpie",
+        'pieceName': "Warp of the Roses",
+        'imgId': "nftImages/Warp_of_the_Roses.jpg",
+        'imgDesc': "created from original Acyrilic painting.",
+        'ethPrice': "3.084",
+        'bnbPrice': "14.000",
+    },
+      {
+        'id': '93ASNL',
+          'artistName': "Terpie",
+        'pieceName': "Street Signs",
+        'imgId': "nftImages/Street_Signs.jpg",
+        'imgDesc': "Which Road will you choose on this long Tripp.......",
+        'ethPrice': "3.965",
+        'bnbPrice': "18.025",
+    },
+      {
+        'id': '88INOA',
+          'artistName': "Terpie",
+        'pieceName': "Tetra-Colored Summer",
+        'imgId': "nftImages/Tetra-ColoredSummer.jpg",
+        'imgDesc': "Digital work inspired by original painting using acyrilic pour technique.",
+        'ethPrice': "6.889",
+        'bnbPrice': "31.280",
+    },
+      {
+        'id': 'BS6969',
+          'artistName': "Terpie",
+        'pieceName': "Prismatic Side of The Moon",
+        'imgId': "nftImages/PrismaticSideofTheMoon.jpg",
+        'imgDesc': "Shifting light to sides of each story, continually showing the way throughout time and space.",
+        'ethPrice': "3.798",
+        'bnbPrice': "17.242",
+    },
+      {
+        'id': 'TP4201',
+          'artistName': "Terpie",
+        'pieceName': "Digtal Gander",
+        'imgId': "nftImages/DigtalGander.jpg",
+        'imgDesc': "Take a long Gander at this beautiful digital world. Made from originally acrylic painting.",
+        'ethPrice': "2.204",
+        'bnbPrice': "10.004",
+    },
+      {
+        'id': 'PS2020',
+          'artistName': "Pepe Saiyan",
+        'pieceName': "Majik Mooney",
+        'imgId': "nftImages/MajikMooney.png",
+        'imgDesc': "Majik kicks ass and thats what Mooney is all about.",
+        'ethPrice': "0.925",
+        'bnbPrice': "4.200",
+    },
+      {
+        'id': 'BS2021',
+          'artistName': "Tom JONES",
+        'pieceName': "$MOONEY",
+        'imgId': "nftImages/Mmmooney.png",
+        'imgDesc': "Why would you own anything else?",
+        'ethPrice': "7.628",
+        'bnbPrice': "34.630",
+    },
+      {
+        'id': 'QS2023',
+          'artistName': "Pepe Saiyan",
+        'pieceName': "Jeselon",
+        'imgId': "nftImages/Jeselon.png",
+        'imgDesc': "He is unlikely to be our saviour, but there is little point not offering him a prayer in return for a tweet.",
+        'ethPrice': "1.119",
+        'bnbPrice': "5.082",
+    },
+
 ];
+
 
 
 const OWNER_ADDRESS = "0x46C52823C6cfE568b99824ae1d3201c4E6c581fC";
@@ -60,6 +240,7 @@ let noProviderAbort = true;
 
 window.ethereum.on('accountsChanged', (_chainId) => window.location.reload());
 window.ethereum.on('disconnect', (_chainId) => window.location.reload());
+window.ethereum.on('networkChanged', (_chainId) => window.location.reload());
 
 // Ensures metamask or similar installed
 if (typeof window.ethereum !== 'undefined' || (typeof window.web3 !== 'undefined')) {
@@ -101,9 +282,14 @@ function App() {
 	const [isPending, setIsPending] = useState(false);
 	const [errMsg, setErrMsg] = useState("Transaction failed!");
 	const [isError, setIsError] = useState(false);
+	const [networkId, setNetworkId] = useState(null);
 	
 	const [feedXAU, setFeedXAU] = useState(null);
 	const [currentXAU, setCurrentXAU] = useState(0.00);
+
+	const location = useLocation();
+	const history = useHistory();
+    //console.log(location.pathname);
 
 	// initialize methods here	
 	const updatePriceFeeds = (id, setFeed, setCurrent) => {
@@ -112,8 +298,6 @@ function App() {
 		.then(data => {
 			setCurrent(data.prices[data.prices.length - 1][1]);
 			setFeed(data);
-			console.log(data.prices[data.prices.length - 1][1]);
-			console.log(data) // Prints result from `response.json()`
 		})
 		.catch(error => console.error(error))
 	}
@@ -196,7 +380,10 @@ function App() {
 		}).then(balance => {
 			let formattedBalance = ethers.utils.formatUnits(balance, 18);
 			setEthBal(formattedBalance.toString())
+			setNetworkId(signer.provider.network.chainId);
 		});
+
+		//console.log(signer.provider.network);
 
 		// Sets symbol of ERC20 token (i.e. PCT)
 		//async function getSymbol() {
@@ -293,21 +480,28 @@ function App() {
 		appSize = " big-app";
 	}
 	const isOwner = (OWNER_ADDRESS === walAddress);
+	const networkIsEth = networkId === 1;
+	const networkIsBsc = networkId === 56;
+
+
 
 	return (
+		
 		<div className={"App" + appSize}>
+			{location.pathname !== "/" && <div className="moon-back"/>}
 			<header className="App-header">
-				<div className="ant-page-header-heading-title">
-					MOONEY
+				<div className="ant-page-header-heading-title" onClick={()=>{history.push("/");}}>
+					MOONEY 
 				</div>
+				
 				<form onSubmit={handleConnectSubmit}>
 					<span className="connect-button-holder">
 						{appSize && abbrevWalAdress(walAddress)}
 						{!appSize && <Button type="submit" className="connect-button">Connect MetaMask</Button>}
 					</span>
 				</form>
-				{appSize && <Cards NFTData={NFTData}/>}
-				{!appSize && <Home currentXAU={currentXAU} feedXAU={feedXAU}/>}
+				{location.pathname === "/nfts" && <Cards NFTData={NFTData} handleConnectSubmit={handleConnectSubmit} networkId={networkId}/>}
+				{location.pathname === "/" && <Home currentXAU={currentXAU} feedXAU={feedXAU}/>}
 				<ErrorAlert />
 				<PendingAlert />
 				
@@ -322,7 +516,11 @@ function App() {
 
 				<p>
 					User Wallet address: {walAddress}<br />
-		Eth held: {ethBal}<br />
+					{networkIsEth && <h1>ETH {ethBal}</h1>}
+					{networkIsBsc && <h1>BSC {ethBal}</h1>}
+				
+
+		
 		PCT held: {pctBal}<br />
 				</p>
 
@@ -357,6 +555,7 @@ function App() {
 				</div>
 			</div>
 		</div>
+	
 	);
 }
 

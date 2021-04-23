@@ -21,28 +21,27 @@ export default class FlipTest extends React.Component {
       
     }
   
-    handleFlip(e) {
+    handleFlip(e, handleConnect) {
       e.preventDefault();
+      
       this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
     }
     
   
     render() {
-        const { setCurrentLevel, card } = this.props;
+        const { setCurrentLevel, card, handleConnectSubmit, networkId } = this.props;
         if(!card){
             return false;
         }
-        console.log('card working');
-        console.log(card);
         
       return (
         <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
           <div>
-          <CardFixed handleFlip={this.handleFlip} card={card}/>
+          <CardFixed handleFlip={this.handleFlip} card={card} handleConnectSubmit={handleConnectSubmit}/>
           </div>
   
           <div>
-          <CardFixedBack handleFlip={this.handleFlip} card={card} setCurrentLevel={setCurrentLevel} />
+          <CardFixedBack handleFlip={this.handleFlip} card={card} setCurrentLevel={setCurrentLevel} networkId={networkId}/>
           </div>
         </ReactCardFlip>
       )

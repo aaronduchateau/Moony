@@ -45,6 +45,26 @@ body {
   text-align:center;
 }
 
+.moon-back {
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./mooney_logo.png");
+  background-color: #282c34 !important;
+  margin-left: -20px;
+  background-size: 360px;
+  background-repeat: no-repeat !important;
+  background-position: 75% 25%;
+}
+
+@media (max-width:1000px) {
+  .moon-back {
+    background-image: none;
+  }
+}
+
+
 
 
 .App-logo {
@@ -65,7 +85,7 @@ body {
 }
 
 .App-header {
-   background-color: #282c34 !important;
+   /*background-color: #282c34 !important;*/
    /*background-color: red !important;*/
   min-height: 100vh;
   display: flex;
@@ -97,11 +117,31 @@ body {
 .zoom {
   transition: transform .2s; /* Animation */
   width: 318px;
-  height: 239px;
+  box-shadow: 6px -49px 56px 29px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 6px -49px 56px 29px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 6px -49px 56px 29px rgba(0,0,0,0.75) inset;
 }
 
 .zoomedIn {
   transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  -webkit-box-shadow: 4px 27px 50px 50px #000000; 
+  box-shadow: 4px 27px 50px 50px #000000;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 40px;
+}
+
+.box-behind {
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  bottom: 120px;
+  right: 149px;
+  -webkit-box-shadow: 4px 27px 50px 50px #000000; 
+  box-shadow: 4px 27px 50px 50px #000000;
+  background-color: black;
+  border: 0px solid black;
+  border-radius: 70px;
 }
 
 .gold-text-right {
@@ -182,9 +222,36 @@ body {
   margin-top: 18px;
 }
 
+.img-holder-expand {
+  
+}
+
+.front-buy-button {
+  z-index: 20;
+  position: absolute;
+  right: -15px;
+  bottom: 150px;
+  font-size: 30px !important;
+  -webkit-box-shadow: 50px 27px 50px 50px #FF00ED; 
+box-shadow: 50px 27px 50px 50px #FF00ED;
+}
+
+.front-desc-text {
+  z-index: 20;
+  position: absolute;
+  right: -15px;
+  bottom: 0px;
+  font-size: 28px !important;
+  color: #FFFFFF;
+  font-weight: bold;
+text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+}
+
+
+
 .card-template-main {
-  min-height: 465px;
-  max-height: 465px;
+  min-height: 561px;
+  max-height: 561px;
   margin: 10px;
   cursor: pointer;
 }
@@ -203,6 +270,13 @@ body {
  margin-top: 70px;
  margin-left: calc((100vw - 1325px) / 2);
 }
+
+.card-shell-small {
+  min-width: 318px;
+  max-width: 318px;
+  margin-top: 70px;
+  margin-left: auto;
+ }
 
 /* revert chunked scoped to display pages */
 .cgpajZ {
