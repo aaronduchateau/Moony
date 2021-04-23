@@ -40,7 +40,7 @@ body {
 }
 
 .glow {
-  color:#ffffff;
+  color:#fff;
   text-shadow:5px 5px 10px #fff, 1px 1px 10px #ccc;
   text-align:center;
 }
