@@ -298,7 +298,7 @@ function App() {
 		<div className={"App" + appSize}>
 			<header className="App-header">
 				<div className="ant-page-header-heading-title">
-					GLD3
+					MOONEY
 				</div>
 				<form onSubmit={handleConnectSubmit}>
 					<span className="connect-button-holder">

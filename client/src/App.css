@@ -24,11 +24,38 @@ body {
   width: calc(100% - 40px);
 }
 
+.team-photo {
+  max-width: 300px;
+  transform: rotate(15deg);
+}
+
+.team-photo-holder {
+  float: left;
+  max-width: 300px;
+}
+
+.team-text-holder {
+  float: right;
+  max-width: 400px;
+}
+
+.glow {
+  color:#fff;
+  text-shadow:5px 5px 10px #fff, 1px 1px 10px #ccc;
+  text-align:center;
+}
+
 
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.icon-image-main {
+  width: 150px;
+  max-width: 150px;
+  margin: 30px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

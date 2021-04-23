@@ -34,15 +34,15 @@ const data = [
   },
   {
     name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    uv: 390,
+    pv: 800,
+    amt: 500,
   },
   {
     name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    uv: 490,
+    pv: 300,
+    amt: 100,
   },
 ];
 
@@ -60,17 +60,21 @@ export default class RechartFront extends PureComponent {
                           <LineChart width={400} height={200} data={data}>
                             <Line type="monotone" dataKey="pv" stroke="#00a0d0" strokeWidth={4} dot={false} />
                           </LineChart>
+                          <br/>
+                          <p style={{fontSize: '18px'}}>Let's be Real, It's probably gunna fucking tank.</p>
                           </div>
 
                        </div>
                        <div className="mint-leftside" style={{backgroundColor: 'none', border: '0px solid'}}>
                           <div className="sc-fWPcDo cgpajZ tokens-minted" style={{background: 'none', border: '0px solid'}}>
-                             <h3 className="sc-cbDGPM eTEuVf">GLDP3 Tokens Minted</h3>
+                             <h3 className="sc-cbDGPM eTEuVf" style={{marginBottom: '20px'}}>Tokens Minted</h3>
                              <div className="mint-cardGroup">
-                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP">1139049 GLDP3</h4>
+                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>7,234,113,904 MOONEY</h4>
                                 <br/>
-                                <h3 className="sc-cbDGPM eTEuVf">GLDP3 Price</h3>
-                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP">1 GLDP3 = ${currentXAU.toFixed(2)}</h4>
+                                <h3 className="sc-cbDGPM eTEuVf">Expected Returns</h3>
+                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>Probs <span style={{color: 'red'}}>-$6.75</span> or something after our massive launch at the <i>Miami Crypto Exp</i></h4>
+                                <br/>
+                                <p style={{fontSize: '18px'}}>If it works out we might do some cool shit later though. Maybe.</p>
                              </div>
                           </div>
                        </div>
