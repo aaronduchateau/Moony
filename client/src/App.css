@@ -14,6 +14,17 @@ body {
   width: calc(100% - 275px);
 }
 
+.ehfErK {
+  margin-top: 70px;
+  z-index: 100;
+  margin: 0 auto;
+}
+.menu-trig {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
 .back-o-card-buts {
   min-width: 220px !important;
   margin-top: 30px !important;
@@ -44,6 +55,20 @@ body {
   text-shadow:5px 5px 10px #fff, 1px 1px 10px #ccc;
   text-align:center;
 }
+.glow-purp {
+  color:#fff;
+  text-shadow:5px 5px 10px pink, 1px 1px 10px purple;
+  text-align:center;
+}
+
+.qr-big {
+  z-index: 100;
+  position: absolute;
+  bottom: -10px;
+  left: -450px;
+  -webkit-box-shadow: 4px 27px 50px 50px #000000; 
+  box-shadow: 4px 27px 50px 50px #000000;
+}
 
 .moon-back {
   position: fixed;
@@ -53,9 +78,9 @@ body {
   background-image: url("./mooney_logo.png");
   background-color: #282c34 !important;
   margin-left: -20px;
-  background-size: 360px;
+  background-size: 370px;
   background-repeat: no-repeat !important;
-  background-position: 75% 25%;
+  background-position: 75% 15%;
 }
 
 @media (max-width:1000px) {
@@ -77,6 +102,14 @@ body {
   max-width: 150px;
   margin: 30px;
 }
+
+.icon-image-main-roadmap {
+  margin-top: 100px;
+  width: 1150px;
+  max-width: 1150px;
+  float: left;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -152,6 +185,8 @@ body {
   text-align: right;
 }
 
+
+
 .gold-text-right-title {
   font-size: 28px;
 }
@@ -162,6 +197,8 @@ body {
   margin-top: 30px;
   margin-left: -30px;
 }
+
+
 
 .App-link {
   color: #61dafb;
@@ -196,8 +233,15 @@ body {
   font-family: "Barlow",sans-serif;
   -webkit-font-smoothing: antialiased;
   position: absolute;
-  top: 20px;
+  top: 25px;
   left: 20px;
+  cursor: pointer;
+}
+
+.big-app .ant-page-header-heading-title {
+  top: 25px;
+  left: 10px;
+
 }
 
 .cgpajZ_2 {
@@ -479,14 +523,18 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   }@media (min-width:750px) {
     .footer-socials {
     flex-direction: row;
-  }
+    }
+    
   }.footer-icon {
     width: 1.5rem;
   }
-  @media (min-width:750px) {
+  
+  @media (max-width:750px) {
     .footer-icon {
     width: 2rem;
   }
+  
+  
   }#nav-link {
     font-size: 1rem;
     width: 100%;
@@ -1744,6 +1792,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
     margin-bottom: 1rem;
   }
   }@media (min-width:750px) {
+    .picture-text-small {display: none;}
     .img-wrapper {
     width: 50%}
   }@media (min-width:1200px) {
@@ -1752,6 +1801,86 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
     margin-bottom: 0;
   }
   
+  
+  }
+  @media (min-width:750px) {
+    .mint-cointainer-front {
+      display: block;
+    }
+    .just-chart{
+      display: none;
+    }
+    .ant-page-header-heading-title {
+      margin-bottom: 0;
+      color: #f6f6f6;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 42px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-family: "Barlow",sans-serif;
+      -webkit-font-smoothing: antialiased;
+      position: absolute;
+      top: 3px;
+      left: -105px;
+      cursor: pointer;
+  }
+  .team-big {
+    display: none;
+  }
+}
+
+
+
+  @media (max-width:750px) {
+    
+    .ant-page-header-heading-title {
+      margin-bottom: 0;
+      color: #f6f6f6;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 42px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-family: "Barlow",sans-serif;
+      -webkit-font-smoothing: antialiased;
+      position: absolute;
+      top: 3px;
+      left: -105px;
+      cursor: pointer;
+  }
+  .icon-image-main-roadmap {
+    margin-top: 100px;
+    width: 600px;
+    max-width: 600px;
+    float: left;
+  }
+  .team-text-holder-small {
+    max-width: 200px;
+  }
+  .team-photo-holder-small {
+    display: block;
+  }
+  .mint-cointainer-front {
+    display: none;
+  }
+  .just-chart{
+    display: block;
+  }
+  .menu-trig {
+    padding-top: 13px;
+  }
+  .connect-button-holder {
+    position: absolute;
+    top: 6px;
+    right: -105px;
+    z-index: 2;
+}
+    .picture-text {display: none;}
+    .img-wrapper {
+    width: 50%}
   }
   
   

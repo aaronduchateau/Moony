@@ -52,7 +52,28 @@ export default class RechartFront extends PureComponent {
     const { currentXAU, feedXAU } = this.props;
     return (
       <main className="sc-iitrsy eGMabU" style={{clear: 'both'}}>
+        <div class="just-chart">
+                    
+                          <br/>
+                          <p style={{fontSize: '18px'}}>Let's be Real, It's probably gunna fucking tank.</p>
+                          <div className="sc-fWPcDo cgpajZ tokens-minted" style={{background: 'none', border: '0px solid'}}>
+                             <h3 className="sc-cbDGPM eTEuVf" style={{marginBottom: '20px'}}>Tokens Minted</h3>
+                             <div className="mint-cardGroup">
+                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>7,234,113,904 MOONEY</h4>
+                                <br/>
+                                <h3 className="sc-cbDGPM eTEuVf">Expected Returns</h3>
+                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>Probs <span style={{color: 'red'}}>-$6.75</span> or something after our <br/>big ass launch at the <i>Miami Crypto Exp</i></h4>
+                                <br/>
+                                <p style={{fontSize: '18px'}}>If it works out we might do <br/>some cool shit later though. Maybe.</p>
+                             </div>
+                          </div>
+
+
+
+                        </div>
               <div>
+              
+
                  <section className="mint-container mint-cointainer-front">
                     <div className="mint-centerContainer mint-centerContainer-front">
                        <div className="sc-hjWSAi jEjURK mint-wrapper">

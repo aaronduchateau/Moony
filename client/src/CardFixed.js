@@ -25,7 +25,7 @@ const CardFixed = (props) => {
         handleFlip(e);  
       }
       const zoomedIn = photoView ? 'zoomedIn' : '';
-      const qrPath = "QR/" + card.id + ".png";
+      const qrPath = "QR2/" + card.id + ".png";
   
     
       return (
@@ -33,10 +33,11 @@ const CardFixed = (props) => {
         <h3 className="sc-cbDGPM eTEuVf">{card.artistName}</h3>
         <div className="mint-cardGroup">
             
-                <img src={card.imgId} class={"zoom " + zoomedIn} style={{ paddingBottom: '10px' }} onClick={imgClick} />
+                <img src={card.imgId} class={"zoom " + zoomedIn} style={{ marginBottom: '10px' }} onClick={imgClick} />
                 {photoView && <Button className="front-buy-button" onClick={onFlip}>Buy this NFT</Button>}
                 {photoView && <h2 className="front-desc-text">{card.imgDesc}</h2>}
                 {photoView && <div className="box-behind">&nbsp;</div>}
+                {photoView && <img src={qrPath} class="qr-big" width="370" height="370" />}
                 
             
             

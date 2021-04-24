@@ -283,6 +283,7 @@ function App() {
 	const [errMsg, setErrMsg] = useState("Transaction failed!");
 	const [isError, setIsError] = useState(false);
 	const [networkId, setNetworkId] = useState(null);
+	const [isMenuOpen, setMenuOpen] = useState(false);
 	
 	const [feedXAU, setFeedXAU] = useState(null);
 	const [currentXAU, setCurrentXAU] = useState(0.00);
@@ -490,6 +491,17 @@ function App() {
 		<div className={"App" + appSize}>
 			{location.pathname !== "/" && <div className="moon-back"/>}
 			<header className="App-header">
+			<nav className="sc-bqyKva ehfErK">
+					<div onClick={()=>{setMenuOpen(!isMenuOpen)}} className="menu-trig">The Moon'ue</div>
+					<ul className="sc-fodVxV cYLuAZ" style={{display: isMenuOpen? 'block' : 'none' }}>
+					<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/">Home</a></li>
+						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/nfts">NFT Presale</a></li>
+						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/roadmap">Roadmap</a></li>
+						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="./Mooney_Lightpaper_v1.1.pdf">Moon Paper</a></li>
+						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/are-you-sure-its-a-joke">This is a joke...right?</a></li>
+						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/collaborators">collaborators</a></li>
+					</ul>
+				</nav>
 				<div className="ant-page-header-heading-title" onClick={()=>{history.push("/");}}>
 					MOONEY 
 				</div>
@@ -502,52 +514,48 @@ function App() {
 				</form>
 				{location.pathname === "/nfts" && <Cards NFTData={NFTData} handleConnectSubmit={handleConnectSubmit} networkId={networkId}/>}
 				{location.pathname === "/" && <Home currentXAU={currentXAU} feedXAU={feedXAU}/>}
+				{location.pathname === "/are-you-sure-its-a-joke" && <div>
+					<br/><br/><br/>
+					<h2 class="glow-purp">Clearly this is all<br/> a big joke...<br/>...or is it?</h2>
+					<br/><br/>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/hLyz_G6vG8g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<br/><br/>
+					</div>}
 				<ErrorAlert />
 				<PendingAlert />
 				
 				
+				{location.pathname === "/roadmap" &&
+				<img src="./roadmap.png" className="icon-image-main-roadmap" />}
+				{location.pathname === "/collaborators" &&
+				<div><br/><br/><br/>
+					<h2 style={{textAlign: 'left'}}>Space Fund</h2>
+					<p style={{textAlign: 'left'}}>Spacefund venture capital - "funding the future"</p>
+					<img src="./sponser2.png" style={{marginTop: '10px'}} className="icon-image-main-roadmap" />
+					<h2>&nbsp;</h2>
+					<h2 style={{textAlign: 'left'}}>Arra Gloabl Summit</h2>
+					<p style={{textAlign: 'left'}}> Intimate gatherings for expectional people - October 14th - 17th 2021</p>
+					<img src="./sponser1.png" style={{marginTop: '10px'}} className="icon-image-main-roadmap" />
+					<h2>&nbsp;</h2>
+					<h2 style={{textAlign: 'left'}}>Copernic Space</h2>
+					<p style={{textAlign: 'left'}}>DEMOCRATIZING ACCESS TO SPACE ASSETS</p>
+				<img src="./sponser3.jpeg" style={{marginTop: '10px'}} className="icon-image-main-roadmap" />
+				<h2>&nbsp;</h2>
+				<h2 style={{textAlign: 'left', marginTop: '120px'}}>Wagmi Thinktank</h2>
+					<p style={{textAlign: 'left'}}>Stupid memes in the front, big ideas in the back.</p>
+				<img src="./wagmi-think-tank.jpg" style={{marginTop: '10px'}} className="icon-image-main-roadmap" />
+				</div>}
 				
 				
-				
-				<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+				<br/>
 				<br/>
 
-				<h2>{coinSymbol}</h2>
-
-				<p>
-					User Wallet address: {walAddress}<br />
-					{networkIsEth && <h1>ETH {ethBal}</h1>}
-					{networkIsBsc && <h1>BSC {ethBal}</h1>}
 				
-
-		
-		PCT held: {pctBal}<br />
-				</p>
-
-				<form onSubmit={handleBuySubmit}>
-					<p>
-						<label htmlFor="buypct">PCT to buy:</label>
-						<input type="number" step="1" min="0" id="buypct"
-							name="buypct" onChange={e => valueChange(e.target.value)} required
-							style={{ margin: '12px' }} />
-						<Button type="submit" >Buy PCT</Button>
-					</p>
-				</form>
-
-				<form onSubmit={handleSellSubmit}>
-					<p>
-						<label htmlFor="sellpct">PCT to sell:</label>
-						<input type="number" step="1" min="0" id="sellpct"
-							name="sellpct" onChange={e => valueChange(e.target.value)} required
-							style={{ margin: '12px' }} />
-						<Button type="submit" >Sell PCT</Button>
-					</p>
-				</form>
-
-				<a title="GitR0n1n / CC BY-SA (https://creativecommons.org/licenses/by-sa/4.0)" href="https://commons.wikimedia.org/wiki/File:Ethereum-icon-purple.svg">
-					<span style={{ fontSize: '12px', color: 'grey' }}>
-						Ethereum logo by GitRon1n
-		</span></a>
+					<span style={{ fontSize: '45px', color: 'white' }}>
+						*Mooney is Powered by the Wagmi Thinktank
+						<br/>
+				<br/>
+		</span>
 			</header>
 			<div class="admin-label">
 				<div class="admin-label-sub">
