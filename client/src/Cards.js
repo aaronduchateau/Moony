@@ -12,7 +12,7 @@ const data = [
 const COLORS = ['#56e2f6', '#00a0d0', '#FFBB28', '#FF8042'];
 
 const Cards = (props) => {
-        const { NFTData, handleConnectSubmit, networkId } = props;
+        const { NFTData, handleConnectSubmit, networkId, payWithMetamask } = props;
         const [topLevel, setTopLevel] = useState(null);
         const [subLevel, setSubLevel] = useState(null);
 
@@ -29,7 +29,7 @@ const Cards = (props) => {
             let FlipTestHolder = [];
             //let isTopLevel = (topLevel === null);
             _.each(NFTData, (item,index)=>{
-                FlipTestHolder.push(<FlipTest setCurrentLevel={setCurrentLevel} card={item} handleConnectSubmit={handleConnectSubmit} networkId={networkId}/>);
+                FlipTestHolder.push(<FlipTest setCurrentLevel={setCurrentLevel} card={item} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask} />);
             })
             return FlipTestHolder;
             };

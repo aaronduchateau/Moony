@@ -11,3 +11,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* The Modal (background) */
+.modal-small {
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content-small {
+  margin: auto;
+  padding: 20px;
+  width: 600px;
+  max-width: 600px;
+  min-height: 300px;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(13px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+
+}
+
+/* The Close Button */
+.close-small {
+  color: #d8d8d8;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-small:hover,
+.close-small:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -7,6 +7,7 @@ import { Button, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Home';
 import Cards from './Cards';
+import Modal from './Modal'
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -24,6 +25,7 @@ const NFTData  = [
         'imgDesc': "As the moon gazes down upon you it’s bum wiggles hello.",
         'ethPrice': "0.544",
         'bnbPrice': "2.470",
+		'usdPrice': "657",
     },
 	{
         'id': 'EG3923',
@@ -31,8 +33,9 @@ const NFTData  = [
         'pieceName': "Mooney's Holdup",
         'imgId': "nftImages/MooneyHoldup.png",
         'imgDesc': "This man needs the price of $MOONEY to pump, he has to feed his family some how.",
-        'ethPrice': "0.949",
+        'ethPrice': "0.949", 
         'bnbPrice': "4.312",
+		'usdPrice': "2309",
     },
   {
         'id': 'GR9201',
@@ -42,6 +45,7 @@ const NFTData  = [
         'imgDesc': "Mooney may be the love child of the WAGMI Think Tank and Vlad, some say Mooney has Vlad’s eyes.",
         'ethPrice': "0.848",
         'bnbPrice': "3.850",
+		'usdPrice': "2086",
     },
   {
         'id': 'PR9323',
@@ -51,6 +55,7 @@ const NFTData  = [
         'imgDesc': "agent#112341211 found a rogue NASA employee looking at MooneyHQ, no one can know Mooney is on the Moon.",
         'ethPrice': "0.698",
         'bnbPrice': "3.168",
+		'usdPrice': "2.470",
     },
   {
         'id': 'SR3432',
@@ -60,6 +65,7 @@ const NFTData  = [
         'imgDesc': "When Mooney’s are asked how they got to the Moon before everyone else they just shrug and say “Go Figure”.",
         'ethPrice': "1.842",
         'bnbPrice': "8.366",
+		'usdPrice': "1722",
     },
   {
         'id': 'PR2333',
@@ -69,6 +75,7 @@ const NFTData  = [
         'imgDesc': "Since the beginning Mooney has lived on the Moon, fashion hasn’t changed much all that matters is the bum.",
         'ethPrice': "0.248",
         'bnbPrice': "1.124",
+		'usdPrice': "612",
     },
   {
         'id': 'SK9309',
@@ -78,6 +85,7 @@ const NFTData  = [
         'imgDesc': "Man laying a massive egg. The Man came first.",
         'ethPrice': "0.257",
         'bnbPrice': "1.168",
+		'usdPrice': "634",
     },
   {
         'id': 'NJ4532',
@@ -87,6 +95,7 @@ const NFTData  = [
         'imgDesc': "Confident moonchad smoking a ciggie knowing Mooney will make him rich.",
         'ethPrice': "0.306",
         'bnbPrice': "1.390",
+		'usdPrice': "2.470",
     },
   {
         'id': 'TY3493',
@@ -96,6 +105,7 @@ const NFTData  = [
         'imgDesc': "Women submitting their behinds to the powerful moon in the sky.",
         'ethPrice': "0.349",
         'bnbPrice': "1.582",
+		'usdPrice': "755",
     },
   {
         'id': 'GH9023',
@@ -105,6 +115,7 @@ const NFTData  = [
         'imgDesc': "Drake expressing his exquisite taste for Mooney.",
         'ethPrice': "0.303",
         'bnbPrice': "1.374",
+		'usdPrice': "747",
     },
   {
         'id': 'KJ1390',
@@ -114,6 +125,7 @@ const NFTData  = [
         'imgDesc': "A visual description comparing Mooney Holders to other moon tokens.",
         'ethPrice': "0.264",
         'bnbPrice': "1.198",
+		'usdPrice': "651",
     },
   {
         'id': 'KS2834',
@@ -123,6 +135,7 @@ const NFTData  = [
         'imgDesc': "WAGMI breaks the internet by mooning the cameraman.",
         'ethPrice': "0.394",
         'bnbPrice': "1.788",
+		'usdPrice': "972",
     },
   {
         'id': 'JS3892',
@@ -132,6 +145,7 @@ const NFTData  = [
         'imgDesc': "The main object of attraction is the bum if it is round like a moon it makes .",
         'ethPrice': "0.529",
         'bnbPrice': "2.400",
+		'usdPrice': "1314",
     },
   {
         'id': 'NE2093',
@@ -141,6 +155,7 @@ const NFTData  = [
         'imgDesc': "Cheeks made out of moon? Cheese?.",
         'ethPrice': "0.181",
         'bnbPrice': "0.822",
+		'usdPrice': "449",
     },
   {
         'id': 'QE3490',
@@ -150,15 +165,17 @@ const NFTData  = [
         'imgDesc': "Inspired by the music of ST4RFOX.",
         'ethPrice': "5.286",
         'bnbPrice': "24.012",
+		'usdPrice': "13147",
     },
   {
         'id': '54JASN',
           'artistName': "Terpie",
         'pieceName': "Warp of the Roses",
-        'imgId': "nftImages/Warp_of_the_Roses.jpg",
+        'imgId': "nftImages/Warp_or_the_Roses.jpg",
         'imgDesc': "created from original Acyrilic painting.",
         'ethPrice': "3.084",
         'bnbPrice': "14.000",
+		'usdPrice': "7666",
     },
       {
         'id': '93ASNL',
@@ -168,6 +185,7 @@ const NFTData  = [
         'imgDesc': "Which Road will you choose on this long Tripp.......",
         'ethPrice': "3.965",
         'bnbPrice': "18.025",
+		'usdPrice': "9856",
     },
       {
         'id': '88INOA',
@@ -177,6 +195,7 @@ const NFTData  = [
         'imgDesc': "Digital work inspired by original painting using acyrilic pour technique.",
         'ethPrice': "6.889",
         'bnbPrice': "31.280",
+		'usdPrice': "17124",
     },
       {
         'id': 'BS6969',
@@ -186,6 +205,7 @@ const NFTData  = [
         'imgDesc': "Shifting light to sides of each story, continually showing the way throughout time and space.",
         'ethPrice': "3.798",
         'bnbPrice': "17.242",
+		'usdPrice': "9441",
     },
       {
         'id': 'TP4201',
@@ -195,6 +215,7 @@ const NFTData  = [
         'imgDesc': "Take a long Gander at this beautiful digital world. Made from originally acrylic painting.",
         'ethPrice': "2.204",
         'bnbPrice': "10.004",
+		'usdPrice': "5568",
     },
       {
         'id': 'PS2020',
@@ -204,6 +225,7 @@ const NFTData  = [
         'imgDesc': "Majik kicks ass and thats what Mooney is all about.",
         'ethPrice': "0.925",
         'bnbPrice': "4.200",
+		'usdPrice': "2299",
     },
       {
         'id': 'BS2021',
@@ -213,6 +235,7 @@ const NFTData  = [
         'imgDesc': "Why would you own anything else?",
         'ethPrice': "7.628",
         'bnbPrice': "34.630",
+		'usdPrice': "18961",
     },
       {
         'id': 'QS2023',
@@ -222,6 +245,7 @@ const NFTData  = [
         'imgDesc': "He is unlikely to be our saviour, but there is little point not offering him a prayer in return for a tweet.",
         'ethPrice': "1.119",
         'bnbPrice': "5.082",
+		'usdPrice': "2796",
     },
 
 ];
@@ -236,11 +260,7 @@ const contractAddress = '0xa8dC92bEeF9E5D20B21A5CC01bf8b6a5E0a51888';
 
 let provider;
 let erc20;
-let noProviderAbort = true;
-
-window.ethereum.on('accountsChanged', (_chainId) => window.location.reload());
-window.ethereum.on('disconnect', (_chainId) => window.location.reload());
-window.ethereum.on('networkChanged', (_chainId) => window.location.reload());
+window.noProviderAbort = true;
 
 // Ensures metamask or similar installed
 if (typeof window.ethereum !== 'undefined' || (typeof window.web3 !== 'undefined')) {
@@ -256,16 +276,20 @@ if (typeof window.ethereum !== 'undefined' || (typeof window.web3 !== 'undefined
 		//	setSigner(provider.getSigner());
 		//		erc20 = new ethers.Contract(contractAddress, PreciousChickenToken.abi, signer);
 		//}
+		window.ethereum.on('accountsChanged', (_chainId) => window.location.reload());
+		window.ethereum.on('disconnect', (_chainId) => window.location.reload());
+		window.ethereum.on('networkChanged', (_chainId) => window.location.reload());
 
-		noProviderAbort = false;
+		window.noProviderAbort = false;
 	} catch (e) {
-		noProviderAbort = true;
+		window.noProviderAbort = true;
 	}
 }
 
 function abbrevWalAdress(sha) {
 	return '0x' + sha.slice(-3) + '...' + sha.slice(-3);
 }
+
 
 function App() {
 	const baseSha = "0x00..";
@@ -284,12 +308,75 @@ function App() {
 	const [isError, setIsError] = useState(false);
 	const [networkId, setNetworkId] = useState(null);
 	const [isMenuOpen, setMenuOpen] = useState(false);
+	const [payState, setPayState] = useState(0);
+	const [activeCard, setActiveCard] = useState(null);
+	const [transactionHash, setTransactionHash] = useState(null);
+
+	const [isDownloadMetaOpen, setDownloadMetaOpen] = useState(false);
 	
 	const [feedXAU, setFeedXAU] = useState(null);
 	const [currentXAU, setCurrentXAU] = useState(0.00);
 
 	const location = useLocation();
 	const history = useHistory();
+
+
+	function payWithMetamask(e,card) {
+		if(e && card){
+			e.preventDefault();
+			e.stopPropagation();
+			setActiveCard(card);
+		}
+
+		if (payState === 0) {
+			setPayState(1);
+			return;
+		}
+		if (payState === 2){
+			managePayWithMetamask();
+		}
+		
+	}
+
+	async function managePayWithMetamask() {
+		const networkIsEth = networkId === 1;
+		const networkIsBsc = networkId === 56;
+		//sets up testnet
+		const networkIsKoven = networkId === 42;
+
+		
+		console.log(activeCard);
+		console.log(networkId);
+		
+		let price = '';
+		if(networkIsEth || networkIsKoven){
+		price = activeCard.ethPrice;
+		}
+		if(networkIsBsc){
+		price = activeCard.bnbPrice;
+		}
+
+		let ethereum = window.ethereum;
+
+
+		// Request account access if needed
+		await ethereum.enable();
+
+
+		let provider = new ethers.providers.Web3Provider(ethereum);
+
+		// Acccounts now exposed
+		const params = [{
+			from: window.walAddress,
+			to: "0x8EcE6938bEC69DD1494746b190a1123E99EC0B91",
+			value: ethers.utils.parseUnits(price, 'ether').toHexString()
+		}];
+
+		const transactionHash = await provider.send('eth_sendTransaction', params);
+		setTransactionHash(transactionHash);
+		setPayState(4);
+		console.log('transactionHash is ' + transactionHash);
+	}
     //console.log(location.pathname);
 
 	// initialize methods here	
@@ -312,17 +399,24 @@ function App() {
 		//updatePriceFeeds('ethereum', setCurrentXAU);
 	});
 
+	useEffect(() => {
+		if(payState === 2){
+			payWithMetamask();
+		}
+	},[payState]);
+
+
 
 	
 	// Aborts app if metamask etc not present
-	if (noProviderAbort) {
-		return (
-			<div>
-				<h1>Error</h1>
-				<p><a href="https://metamask.io">Metamask</a> or equivalent required to access this page.</p>
-			</div>
-		);
-	}
+	//if (noProviderAbort) {
+	//	return (
+	//		<div>
+	//			<h1>Error</h1>
+	//			<p><a href="https://metamask.io">Metamask</a> or equivalent required to access this page.</p>
+	//		</div>
+	//	);
+	//}
 
 	try {
 		// Ethers.js set up, gets data from MetaMask and blockchain
@@ -370,6 +464,7 @@ function App() {
 		// Sets current balance of PCT for user
 		signer.getAddress().then(response => {
 			setWalAddress(response);
+			window.walAddress = response;
 			return erc20.balanceOf(response);
 		}).then(balance => {
 			setPctBal(balance.toString())
@@ -457,9 +552,21 @@ function App() {
 		sellPCT();
 	};
 
+	// Handles fox close
+	const handleDownloadFoxClose = (e: React.FormEvent) => {
+		setDownloadMetaOpen(false);
+	};
+
 	// Handles user sell form submit
 	const handleConnectSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+		if ((typeof window.web3 === 'undefined')){
+			setDownloadMetaOpen(true);
+			return;
+		}
+		
+
+
 		try {
 			// Ethers.js set up, gets data from MetaMask and blockchain
 			window.ethereum.enable().then(() => {
@@ -490,6 +597,44 @@ function App() {
 		
 		<div className={"App" + appSize}>
 			{location.pathname !== "/" && <div className="moon-back"/>}
+			{isDownloadMetaOpen && <Modal onClose={()=>{setPayState(0)}}>
+				<h2>It looks like you don't<br/> have fox powers yet</h2>
+				<img src="./fox.svg" width="200px" />
+				<p style={{padding: '15px'}}>Download your Metamask wallet to pre-purchase our NFT's</p>
+				<Button type="submit" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en" target="_blank" className="connect-button">Download MetaMask</Button>
+			</Modal>}	
+			{payState === 1 && <Modal onClose={()=>{setPayState(0)}}>
+				<h2>Send Exactly</h2>
+				{activeCard.ethPrice} ETH<br/>
+				or<br/>
+				{activeCard.bnbPrice} BNB <br/>
+				or<br/>
+				{activeCard.usdPrice} USD<br/>
+				to<br/>
+				0x8EcE6938bEC69DD1494746b190a1123E99EC0B91
+				<br/>
+				<br/>
+				<h2>- Or -</h2>
+				<br/>
+				<img src="./fox.svg" width="50px" /> &nbsp;&nbsp;
+				<Button type="submit" onClick={()=>{setPayState(2)}} className="connect-button">Pay With MetaMask</Button>
+			</Modal>}	
+			{payState === 2 && <Modal onClose={()=>{setPayState(0)}}>
+				<h2>Attempting to Launch Fox</h2>
+				<img src="./fox.svg" width="150px" /><br/>
+				<br/>
+				If Metamask doesn't launch, it may be because you already have a transaction Launched. Try manually opening the extension...
+			</Modal>}	
+			{payState === 4 && <Modal onClose={()=>{setPayState(0)}}>
+				<h2>Success!</h2>
+				<img src="./fox.svg" width="150px" /><br/>
+				<br/>
+				Your NFT has been pre-ordered!<br/>
+				Please save your transaction hash for reference later.<br/>
+				{transactionHash}
+
+			</Modal>}
+			
 			<header className="App-header">
 			<nav className="sc-bqyKva ehfErK">
 					<div onClick={()=>{setMenuOpen(!isMenuOpen)}} className="menu-trig">The Moon'ue</div>
@@ -512,7 +657,7 @@ function App() {
 						{!appSize && <Button type="submit" className="connect-button">Connect MetaMask</Button>}
 					</span>
 				</form>
-				{location.pathname === "/nfts" && <Cards NFTData={NFTData} handleConnectSubmit={handleConnectSubmit} networkId={networkId}/>}
+				{location.pathname === "/nfts" && <Cards NFTData={NFTData} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask}/>}
 				{location.pathname === "/" && <Home currentXAU={currentXAU} feedXAU={feedXAU}/>}
 				{location.pathname === "/are-you-sure-its-a-joke" && <div>
 					<br/><br/><br/>
@@ -553,7 +698,8 @@ function App() {
 				
 					<span style={{ fontSize: '45px', color: 'white' }}>
 						*Mooney is Powered by the Wagmi Thinktank
-						<br/>
+						<br/><br/>
+						<img src="./fox.svg" width="50px" />
 				<br/>
 		</span>
 			</header>
@@ -566,6 +712,8 @@ function App() {
 	
 	);
 }
+
+
 
 export default App;
 

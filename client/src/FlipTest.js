@@ -29,7 +29,7 @@ export default class FlipTest extends React.Component {
     
   
     render() {
-        const { setCurrentLevel, card, handleConnectSubmit, networkId } = this.props;
+        const { setCurrentLevel, card, handleConnectSubmit, networkId, payWithMetamask} = this.props;
         if(!card){
             return false;
         }
@@ -37,11 +37,11 @@ export default class FlipTest extends React.Component {
       return (
         <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
           <div>
-          <CardFixed handleFlip={this.handleFlip} card={card} handleConnectSubmit={handleConnectSubmit}/>
+          <CardFixed handleFlip={this.handleFlip} card={card} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask}/>
           </div>
   
           <div>
-          <CardFixedBack handleFlip={this.handleFlip} card={card} setCurrentLevel={setCurrentLevel} networkId={networkId}/>
+          <CardFixedBack handleFlip={this.handleFlip} card={card} setCurrentLevel={setCurrentLevel} networkId={networkId} payWithMetamask={payWithMetamask}/>
           </div>
         </ReactCardFlip>
       )
