@@ -297,26 +297,10 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
 }
 
 .pie-holder {
-  position: absolute;
-  left: 35px;
-  top: -52px;
-  min-width: 318px;
-  min-height: 239px;
+  display: block
 }
 
-.card-shell {
- min-width: 1025px;
- max-width: 1025px;
- margin-top: 70px;
- margin-left: calc((100vw - 1325px) / 2);
-}
 
-.card-shell-small {
-  min-width: 318px;
-  max-width: 318px;
-  margin-top: 70px;
-  margin-left: auto;
- }
 
 /* revert chunked scoped to display pages */
 .cgpajZ {
@@ -329,9 +313,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   position: relative;
 }
 @media (min-width: 200px){
-.cgpajZ {
-    padding: 1rem;
-}
+
 }
 .cmAEMu {
   margin-bottom: 2rem;
@@ -612,24 +594,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
     padding: 1rem;
     color: #fff;
   }
-  @media (min-width:1200px) {
-    .collection-collection {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto 1fr 1fr;
-    grid-row-gap: 1rem;
-    row-gap: 1rem;
-  }
-  }@media (min-width:1200px) {
-    .collection-walletStats {
-    display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    grid-column-gap: 1rem;
-    -webkit-column-gap: 1rem;
-    column-gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  }.collection-stats {
+.collection-stats {
     width: 100%}
   .collection-rarest {
     grid-row-start: 2;
@@ -784,12 +749,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   .gem-text {
     text-align: center;
   }
-  .singleCard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-  }
+  
   @media (min-width:750px) {
     .singleCard {
     display: none;
@@ -801,118 +761,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
     padding: 4em 0;
   }
   
-  @media (min-width:1200px) {
-    .cards {
-    width: 50%}
-  }.card {
-    position: relative;
-    perspective: 150em;
-    width: 191px;
-    height: 339px;
-  }
-  .card:hover {
-    cursor: pointer;
-  }
-  .card__side {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 191px;
-    height: 339px;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transition: all .6s ease;
-    box-shadow: 1em 1em 2em rgba(0, 0, 0, .2);
-  }
-  .card__side--front {
-    background-color: transparent;
-  }
-  .card__side--back {
-    color: #fff;
-    transform: rotateY(180deg);
-  }
-  .card:hover .card__side--front {
-    transform: rotateY(-180deg);
-  }
-  .card:hover .card__side--back {
-    transform: rotate(0);
-  }
-  .img-binders {
-    width: 191px;
-    height: 339px;
-  }
-  .bigText {
-    background: #000;
-    width: 100%;
-    padding: 5rem 2rem;
-  }
-  .bigText-border {
-   
-  }
-  .bigText-text {
-    color: #fff;
-    line-height: 150%;
-    width: 100%}
-  @media (min-width:200px) {
-    .bigText-text {
-    font-size: 2rem;
-    text-align: center;
-  }
-  }@media (min-width:1200px) {
-    .bigText-text {
-    font-size: 32px;
-    text-align: left;
-    width: 40%}
-  }.bigText-regular {
-    color: #fff;
-    line-height: 150%}
-  @media (min-width:200px) {
-    .bigText-regular {
-    text-align: center;
-  }
-  }@media (min-width:1200px) {
-    .bigText-regular {
-    text-align: left;
-  }
-  }p {
-    margin-right: 0;
-  }
-  .bigText-group {
-    width: 100%}
-  @media (min-width:1200px) {
-    .bigText-group {
-    width: 40%}
-  }.bigText-shortWidth {
-    position: relative;
-    border: 4px solid #f90;
-    padding: 2rem;
-  }
-  @media (min-width:200px) {
-    .bigText-shortWidth {
-    width: 100%;
-    
-  }
-  }@media (min-width:750px) {
-    .bigText-shortWidth {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    width: 90%}
-  }@media (min-width:1200px) {
-    .bigText-shortWidth {
-   
-    max-width: 1440px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 64px;
-    padding-left: 64px;
-  }
-  }.center-mobile__only {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: -1rem;
-  }
+  
 
   .width {
     width: 100%}

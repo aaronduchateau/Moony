@@ -54,10 +54,10 @@ export default class Home2 extends PureComponent {
         return (
             <Container>
                 <Row className="justify-content-md-center" style={{marginTop: "70px"}}>
-                    <Col md="auto">
+                    <Col md="auto" s="12" xs="12"> 
                         <img src={isTootOpen ? "./toot_over.png" : "./mooney_logo.png"} className="gold-image" />
                     </Col>
-                    <Col md="auto">
+                    <Col md="auto" s="12" xs="12">
                         <div className="gold-text-right">
                             <div className="gold-text-right-title">
                                 Mooney is a next gen transparently rediculous ponzi scheme meme coin.
@@ -70,7 +70,7 @@ export default class Home2 extends PureComponent {
                 </Row>
                 <RechartFront currentXAU={currentXAU} feedXAU={feedXAU} />
                 <Row>
-                    <Col>
+                    <Col s="12" xs="12">
                     <br />
                 <br />
                 <br />
@@ -87,7 +87,7 @@ export default class Home2 extends PureComponent {
                 </Row>
 
                 <Row>
-                    <Col>
+                    <Col s="12" xs="12">
                    
                     <img src="./group.png" className="icon-image-main" />
                     <br />
