@@ -1,5 +1,6 @@
 import React, { PureComponent, useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import { Row, Col } from 'react-bootstrap';
 import Card from './Card';
 import FlipTest from './FlipTest';
 import _ from 'lodash';
@@ -23,23 +24,20 @@ const Cards = (props) => {
             setSubLevel(card.parentId);
         }
 
-        const screenSmallClass = window.screen.width < 950 ? "card-shell" : "card-shell-small";
+        //const screenSmallClass = window.screen.width < 950 ? "card-shell" : "card-shell-small";
         
         const returnCards = () => {
             let FlipTestHolder = [];
             //let isTopLevel = (topLevel === null);
             _.each(NFTData, (item,index)=>{
-                FlipTestHolder.push(<FlipTest setCurrentLevel={setCurrentLevel} card={item} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask} />);
+                FlipTestHolder.push(<Col xs="12" s="6" md="4"><FlipTest setCurrentLevel={setCurrentLevel} card={item} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask} /></Col>);
             })
             return FlipTestHolder;
             };
             return (
-                <div className="card-shell-container">
-                    <div className={screenSmallClass}>
+                <Row style={{marginTop: "80px"}}>
                         {returnCards()}
-                    </div>
-                    
-                </div>
+                </Row>
 
             );
         };

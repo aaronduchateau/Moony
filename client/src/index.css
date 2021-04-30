@@ -40,6 +40,12 @@ code {
   color: white;
 
 }
+@media (max-width:750px) {
+  .modal-content-small {
+    width: 300px;
+    max-width: 300px;
+  }
+}
 
 /* The Close Button */
 .close-small {

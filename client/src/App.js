@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { ethers } from "ethers";
 import PreciousChickenToken from "./contracts/PreciousChickenToken.json";
-import { Button, Alert } from 'react-bootstrap';
+import { Button, Alert, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Home from './Home';
+import Home2 from './Home2';
 import Cards from './Cards';
 import Modal from './Modal'
 import {
@@ -313,6 +313,7 @@ function App() {
 	const [transactionHash, setTransactionHash] = useState(null);
 
 	const [isDownloadMetaOpen, setDownloadMetaOpen] = useState(false);
+	const [isTootOpen, setTootOpen] = useState(false);
 	
 	const [feedXAU, setFeedXAU] = useState(null);
 	const [currentXAU, setCurrentXAU] = useState(0.00);
@@ -596,6 +597,7 @@ function App() {
 	return (
 		
 		<div className={"App" + appSize}>
+			
 			{location.pathname !== "/" && <div className="moon-back"/>}
 			{isDownloadMetaOpen && <Modal onClose={()=>{setPayState(0)}}>
 				<h2>It looks like you don't<br/> have fox powers yet</h2>
@@ -637,8 +639,11 @@ function App() {
 			
 			<header className="App-header">
 			<nav className="sc-bqyKva ehfErK">
-					<div onClick={()=>{setMenuOpen(!isMenuOpen)}} className="menu-trig">The Moon'ue</div>
-					<ul className="sc-fodVxV cYLuAZ" style={{display: isMenuOpen? 'block' : 'none' }}>
+				<div onClick={()=>{setMenuOpen(!isMenuOpen);setTootOpen(true);}} className="menu-trig">
+				<div className="toot-holder"> <img src={isTootOpen ? './toot_over.png' : './toot_under.png'} className="toot-img"/></div>
+				</div>
+				{isMenuOpen && <Modal onClose={()=>{setMenuOpen(false)}}>
+					<ul className="sc-fodVxV cYLuAZ">
 					<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/">Home</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/nfts">NFT Presale</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/roadmap">Roadmap</a></li>
@@ -646,7 +651,9 @@ function App() {
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/are-you-sure-its-a-joke">This is a joke...right?</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/collaborators">collaborators</a></li>
 					</ul>
-				</nav>
+				</Modal>}
+			</nav>
+			
 				<div className="ant-page-header-heading-title" onClick={()=>{history.push("/");}}>
 					MOONEY 
 				</div>
@@ -657,8 +664,9 @@ function App() {
 						{!appSize && <Button type="submit" className="connect-button">Connect MetaMask</Button>}
 					</span>
 				</form>
+			<Container>
 				{location.pathname === "/nfts" && <Cards NFTData={NFTData} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask}/>}
-				{location.pathname === "/" && <Home currentXAU={currentXAU} feedXAU={feedXAU}/>}
+				{location.pathname === "/" && <Home2 currentXAU={currentXAU} feedXAU={feedXAU} isTootOpen={isTootOpen} />}
 				{location.pathname === "/are-you-sure-its-a-joke" && <div>
 					<br/><br/><br/>
 					<h2 class="glow-purp">Clearly this is all<br/> a big joke...<br/>...or is it?</h2>
@@ -702,12 +710,14 @@ function App() {
 						<img src="./fox.svg" width="50px" />
 				<br/>
 		</span>
+			</Container>
 			</header>
 			<div class="admin-label">
 				<div class="admin-label-sub">
 					{isOwner && "God of the Chain"}
 				</div>
 			</div>
+			
 		</div>
 	
 	);

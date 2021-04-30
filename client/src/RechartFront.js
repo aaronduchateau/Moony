@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { LineChart, Line } from 'recharts';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const data = [
   {
@@ -51,42 +52,10 @@ export default class RechartFront extends PureComponent {
   render() {
     const { currentXAU, feedXAU } = this.props;
     return (
-      <main className="sc-iitrsy eGMabU" style={{clear: 'both'}}>
-        <div class="just-chart">
-                    
-                          <br/>
-                          <p style={{fontSize: '18px'}}>Let's be Real, It's probably gunna fucking tank.</p>
-                          <div className="sc-fWPcDo cgpajZ tokens-minted" style={{background: 'none', border: '0px solid'}}>
-                             <h3 className="sc-cbDGPM eTEuVf" style={{marginBottom: '20px'}}>Tokens Minted</h3>
-                             <div className="mint-cardGroup">
-                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>7,234,113,904 MOONEY</h4>
-                                <br/>
-                                <h3 className="sc-cbDGPM eTEuVf">Expected Returns</h3>
-                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>Probs <span style={{color: 'red'}}>-$6.75</span> or something after our <br/>big ass launch at the <i>Miami Crypto Exp</i></h4>
-                                <br/>
-                                <p style={{fontSize: '18px'}}>If it works out we might do <br/>some cool shit later though. Maybe.</p>
-                             </div>
-                          </div>
-
-
-
-                        </div>
-              <div>
-              
-
-                 <section className="mint-container mint-cointainer-front">
-                    <div className="mint-centerContainer mint-centerContainer-front">
-                       <div className="sc-hjWSAi jEjURK mint-wrapper">
-                          <div className="sc-gGTGfU fSjCQg">
-                          <LineChart width={400} height={200} data={data}>
-                            <Line type="monotone" dataKey="pv" stroke="#00a0d0" strokeWidth={4} dot={false} />
-                          </LineChart>
-                          <br/>
-                          <p style={{fontSize: '18px'}}>Let's be Real, It's probably gunna fucking tank.</p>
-                          </div>
-
-                       </div>
-                       <div className="mint-leftside" style={{backgroundColor: 'none', border: '0px solid'}}>
+      <Container>
+        <Row className="justify-content-md-center" style={{marginTop: '50px'}}>
+        <Col md="auto">
+                       <div className="" style={{backgroundColor: 'none', border: '0px solid', width: '342px'}}>
                           <div className="sc-fWPcDo cgpajZ tokens-minted" style={{background: 'none', border: '0px solid'}}>
                              <h3 className="sc-cbDGPM eTEuVf" style={{marginBottom: '20px'}}>Tokens Minted</h3>
                              <div className="mint-cardGroup">
@@ -99,10 +68,23 @@ export default class RechartFront extends PureComponent {
                              </div>
                           </div>
                        </div>
-                    </div>
-                 </section>
-              </div>
-           </main>
+                 
+               
+                       </Col>
+          <Col md="auto">
+             
+                       <div className="sc-hjWSAi jEjURK">
+                          <div className="sc-gGTGfU fSjCQg">
+                          <LineChart width={window.screen.width < 1480 ? 280 : 400} height={200} data={data}>
+                            <Line type="monotone" dataKey="pv" stroke="#00a0d0" strokeWidth={4} dot={false} />
+                          </LineChart>
+                          <br/>
+                          <p style={{fontSize: '18px'}}>Let's be Real, It's probably gunna fucking tank.</p>
+                          </div>
+                       </div>
+                       </Col>
+                       </Row>
+           </Container>
         
     );
   }
