@@ -74,8 +74,8 @@ export default class RechartFront extends PureComponent {
           <Col md="auto">
              
                        <div className="sc-hjWSAi jEjURK">
-                          <div className="sc-gGTGfU fSjCQg">
-                          <LineChart width={window.screen.width < 1480 ? 280 : 400} height={200} data={data}>
+                          <div className="sc-gGTGfU fSjCQg" style={{padding: '10px'}}>
+                          <LineChart width={window.screen.width < 1480 ? 280 : 400} height={200} data={data} style={{display: 'block', margin: '0 auto'}}>
                             <Line type="monotone" dataKey="pv" stroke="#00a0d0" strokeWidth={4} dot={false} />
                           </LineChart>
                           <br/>

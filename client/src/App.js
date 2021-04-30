@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { ethers } from "ethers";
 import PreciousChickenToken from "./contracts/PreciousChickenToken.json";
-import { Button, Alert, Container } from 'react-bootstrap';
+import { Button, Alert, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home2 from './Home2';
 import Cards from './Cards';
 import Modal from './Modal'
+import Security from './Security'
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -381,6 +382,7 @@ function App() {
     //console.log(location.pathname);
 
 	// initialize methods here	
+	/*
 	const updatePriceFeeds = (id, setFeed, setCurrent) => {
 		fetch('/coins/' + id + '/market_chart?vs_currency=usd&days=1080&interval=monthly')
 		.then(response => response.json())
@@ -399,6 +401,7 @@ function App() {
 		//updatePriceFeeds('bitcoin');
 		//updatePriceFeeds('ethereum', setCurrentXAU);
 	});
+	*/
 
 	useEffect(() => {
 		if(payState === 2){
@@ -648,8 +651,9 @@ function App() {
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/nfts">NFT Presale</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/roadmap">Roadmap</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="./Mooney_Lightpaper_v1.1.pdf">Moon Paper</a></li>
+						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="./is-security">Are most MOON tokens Securities?</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/are-you-sure-its-a-joke">This is a joke...right?</a></li>
-						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/collaborators">collaborators</a></li>
+						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/collaborators">Collaborators</a></li>
 					</ul>
 				</Modal>}
 			</nav>
@@ -667,6 +671,8 @@ function App() {
 			<Container>
 				{location.pathname === "/nfts" && <Cards NFTData={NFTData} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask}/>}
 				{location.pathname === "/" && <Home2 currentXAU={currentXAU} feedXAU={feedXAU} isTootOpen={isTootOpen} />}
+				{location.pathname === "/is-security" && <Security />}
+			
 				{location.pathname === "/are-you-sure-its-a-joke" && <div>
 					<br/><br/><br/>
 					<h2 class="glow-purp">Clearly this is all<br/> a big joke...<br/>...or is it?</h2>
@@ -679,7 +685,9 @@ function App() {
 				
 				
 				{location.pathname === "/roadmap" &&
-				<img src="./roadmap.png" className="icon-image-main-roadmap" />}
+				<Row><Col md="12" style={{marginTop: '30px'}}>
+				<img src="./roadmap.png" className="icon-image-main-roadmap" />
+				</Col></Row>}
 				{location.pathname === "/collaborators" &&
 				<div><br/><br/><br/>
 					<h2 style={{textAlign: 'left'}}>Space Fund</h2>
