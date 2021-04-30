@@ -10,8 +10,8 @@ body {
   -webkit-font-smoothing: antialiased;
   position: relative;
   margin: 0 auto;
-  max-width: calc(100% - 275px);
-  width: calc(100% - 275px);
+  max-width: 100%;
+  width: 100%;
 }
 
 .ehfErK {
@@ -31,8 +31,8 @@ body {
 }
 
 .big-app {
-  max-width: calc(100% - 40px);
-  width: calc(100% - 40px);
+  max-width: calc(100%);
+  width: calc(100%);
 }
 
 .team-photo {
@@ -105,9 +105,6 @@ body {
 
 .icon-image-main-roadmap {
   margin-top: 100px;
-  width: 1150px;
-  max-width: 1150px;
-  float: left;
 }
 
 
@@ -344,7 +341,6 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   backdrop-filter: blur(13px);
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 2rem;
 }
   
   @font-face {
@@ -624,10 +620,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
     padding-bottom: 1rem;
     position: relative;
   }
-  .mint-cointainer-front {
-    max-width: 800px !important;
-    width: 800px;
-  }
+ 
   
 
   
@@ -763,8 +756,6 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   
   
 
-  .width {
-    width: 100%}
   h1 {
     font-family: "Roboto";
     color: #fff;
@@ -783,9 +774,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   }
   }
   @media (min-width:750px) {
-    .mint-cointainer-front {
-      display: block;
-    }
+    
     .just-chart{
       display: none;
     }
@@ -872,9 +861,6 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   }
   .team-photo-holder-small {
     display: block;
-  }
-  .mint-cointainer-front {
-    display: none;
   }
   .just-chart{
     display: block;
