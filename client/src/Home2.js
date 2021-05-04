@@ -121,9 +121,9 @@ export default class Home2 extends PureComponent {
                 <br />
                 <br />
 
-                <img src="./team.jpg" className="" style={{ width: '100%',maxWidth: '600px' }} />
+                <img src="./dog.jpeg" className="" style={{ width: '100%',maxWidth: '400px' }} />
 
-                <p >Our Decentralized Team <br />Spans 10 countries, <br />and two continents. <br /><br />Concieved in perpetuity by <br />dreamers, artists, comedians, <br />philanthropists, explorers, and a couple of pirates, <br /><br />Launched live at the <br /><i style={{ color: 'pink', fontStyle: 'bold', fontSize: '45px' }} className="glow">Miami Crypto Expo<br /><br /></i></p>
+                <p >Our Lead Dev is this Dog. <br/><br/>His code throws a bunch of exceptions (but he submits the most pull requests.)<br /><br />Concieved in perpetuity by <br />dreamers, artists, comedians, <br />philanthropists, explorers, and a couple of pirates, <br /><br />Launched live at the <br /><i style={{ color: 'pink', fontStyle: 'bold', fontSize: '45px' }} className="glow">Miami Crypto Expo<br /><br /></i></p>
                 <h2><i>#KillingIt</i></h2>
 
                 <br />
