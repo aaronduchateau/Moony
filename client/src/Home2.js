@@ -60,7 +60,7 @@ export default class Home2 extends PureComponent {
                     <Col md="auto" s="12" xs="12">
                         <div className="gold-text-right">
                             <div className="gold-text-right-title">
-                                Mooney is a next gen transparently rediculous ponzi scheme meme coin.
+                                Mooney is a next gen transparently rediculous meme token.
           </div>
 
                             <br />

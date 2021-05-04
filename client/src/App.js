@@ -652,8 +652,6 @@ function App() {
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/roadmap">Roadmap</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="./Mooney_Lightpaper_v1.1.pdf">Moon Paper</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="./is-security">Are most MOON tokens Securities?</a></li>
-						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/are-you-sure-its-a-joke">This is a joke...right?</a></li>
-						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/collaborators">Collaborators</a></li>
 					</ul>
 				</Modal>}
 			</nav>
