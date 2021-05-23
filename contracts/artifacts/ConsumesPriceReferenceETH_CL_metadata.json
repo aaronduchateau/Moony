@@ -1,0 +1,92 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getLatestPrice",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLatestPriceTimestamp",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": "Network: Kovan Aggregator: ETH/USD Address: 0x9326BFA02ADD2366b30bacB125260Af641031331",
+				"getLatestPrice()": {
+					"notice": "Returns the latest price"
+				},
+				"getLatestPriceTimestamp()": {
+					"notice": "Returns the timestamp of the latest price update"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/ConsumesPriceReferenceETH_CL.sol": "ConsumesPriceReferenceETH_CL"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts/src/v0.6/interfaces/AggregatorInterface.sol": {
+			"keccak256": "0xbd2b9524ed06f150fefaf4ea600fa8b426d644f17c9f7ddd6d793c19557c23ca",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://32e224693884f94929ab3128a1f780c517c8c294634f7f0ef56b411131fa9858",
+				"dweb:/ipfs/QmYC99ZwJoPRSmBGV69uwQwdotVcGYC2AMUjLnS48PYiXq"
+			]
+		},
+		"contracts/ConsumesPriceReferenceETH_CL.sol": {
+			"keccak256": "0x979fabebd446a574b1168fd8ac7541171aa4e242974ee5555f82b4bf38c362c2",
+			"urls": [
+				"bzz-raw://648b08dd09a4022548a67a47c20b85056ddbe31844b8833ebd838d016a06521b",
+				"dweb:/ipfs/QmPmBUzqrcj51cAaWGBqYjVf9b3DNJhb4qhAzdn8KETuWs"
+			]
+		}
+	},
+	"version": 1
+}

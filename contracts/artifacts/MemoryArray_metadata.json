@@ -1,0 +1,78 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "memoryArray",
+				"outputs": [],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"memoryArray()": {
+					"notice": "These are temporary arrays and only exists when you are executing a function       Must have a fixed size and must be declared inside a function       You cannot run a for loop in a memory array"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MOONEY_SIMPLE.sol": "MemoryArray"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts/src/v0.6/interfaces/AggregatorInterface.sol": {
+			"keccak256": "0xbd2b9524ed06f150fefaf4ea600fa8b426d644f17c9f7ddd6d793c19557c23ca",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://32e224693884f94929ab3128a1f780c517c8c294634f7f0ef56b411131fa9858",
+				"dweb:/ipfs/QmYC99ZwJoPRSmBGV69uwQwdotVcGYC2AMUjLnS48PYiXq"
+			]
+		},
+		"contracts/ConsumesPriceReferenceETH_CL.sol": {
+			"keccak256": "0x979fabebd446a574b1168fd8ac7541171aa4e242974ee5555f82b4bf38c362c2",
+			"urls": [
+				"bzz-raw://648b08dd09a4022548a67a47c20b85056ddbe31844b8833ebd838d016a06521b",
+				"dweb:/ipfs/QmPmBUzqrcj51cAaWGBqYjVf9b3DNJhb4qhAzdn8KETuWs"
+			]
+		},
+		"contracts/ConsumesPriceReferenceXUA_CL.sol": {
+			"keccak256": "0xf0070adb00b2b64ce7bf66200f4062d3de7435feb8b124764a651b49be1d1994",
+			"urls": [
+				"bzz-raw://8e90b84fa03903cdd818b7d1b63fb2890e3e5950d1cfd9d9cd600aa16354e4fb",
+				"dweb:/ipfs/QmWVDDn7HnCou45Gi8VpTkfNe9DxnBtuYiByU5JLVg51Gi"
+			]
+		},
+		"contracts/MOONEY_SIMPLE.sol": {
+			"keccak256": "0xbfb8b9f3c0124233a51d95b2e4d5bd6ed47767067b07b14d32f60836c445f422",
+			"urls": [
+				"bzz-raw://ec7995df868b373f4a0c00d009f4be43df6ecf137438f3feae0ec916375f7caa",
+				"dweb:/ipfs/QmcwJZrFahddynT3UPxz9fJ8uBiAZ2UGGY1mXzzR2Cc9ps"
+			]
+		}
+	},
+	"version": 1
+}
