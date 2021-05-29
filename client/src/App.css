@@ -283,6 +283,103 @@ body {
 box-shadow: 50px 27px 50px 50px #FF00ED;
 }
 
+.front-buy-button-2 {
+  font-size: 26px !important;
+  -webkit-box-shadow: -140px 27px 50px 50px #FF00ED; 
+box-shadow: -140px  27px 50px 50px #FF00ED;
+  
+}
+
+.security-holder {
+  margin-top: 100px;
+}
+
+
+.pink-sample {
+z-index: 20;
+position: absolute;
+left: 225px;
+top: 0px;
+width: 450px;
+font-size: 30px !important;
+box-shadow: 0px 0px 35px 35px #ff00ed;
+}
+
+.policy-maker {
+  background: rgba(0, 0, 0, 0.01);
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  border-radius: 18px;
+  height: 70px;
+  margin-bottom: 2px;
+  padding: 5px;
+}
+
+.policy-maker-thresh {
+  background: rgba(0, 0, 0, 0.01);
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  border-radius: 18px;
+  height: 40px;
+  margin-bottom: 2px;
+  padding: 15px;
+  max-width: 140px;
+  width: 140px;
+  font-size: 14px !important;
+  text-align: right;
+}
+
+
+
+.large-policy-maker:focus-visible{
+  outline: 0px;
+}
+
+.large-policy-maker{
+  padding-right: 20px;
+}
+
+.colorBump input{
+  color: #00a0d0 !important;
+  text-align: right;
+}
+
+.colorBump2 input{
+  color: #00a0d0 !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.policy-maker.active-maker {
+  width: 130%;
+  background: #007bff;
+  -webkit-backdrop-filter: blur(13px);
+  backdrop-filter: blur(13px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  height: 70px;
+  margin-bottom: 0px;
+  padding: 5px;
+  margin-left: -9px;
+}
+
+.policy-dropper {
+  
+
+}
+
+.black-thick {
+  margin: 0 auto;
+  background: black;
+  border: 1px solid grey;
+  border-radius: '10px';
+}
+
+.small-text {
+  font-weight: bold;
+  font-size: 12px;
+}
+
 .front-desc-text {
   z-index: 20;
   position: absolute;

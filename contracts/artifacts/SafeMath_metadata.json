@@ -55,10 +55,10 @@
 			]
 		},
 		"contracts/MOONEY_SIMPLE.sol": {
-			"keccak256": "0x1f668233040d4166e85d708b32943456aa5f7b92da2096996180a1c155dfdd36",
+			"keccak256": "0xa8c4d9294c8804287a236a397b82d097727719b73fe6906962698f22951a62f6",
 			"urls": [
-				"bzz-raw://95b85da65b338a7c9e55c741da75e14aee91eb7164bcc77875cf33227e24d419",
-				"dweb:/ipfs/QmUJezePGHF2mLsAyFhxtrPQhVPDKHs1A9gwE8aNyTNNJv"
+				"bzz-raw://6f4441ca2f068fb07b14c026d72af2d9402250369e8bee056d91e30b9178f2ce",
+				"dweb:/ipfs/QmbhcSVpyVCVb9kvBcs6H6gvTPWyXJADtxokCfQc6MNi8p"
 			]
 		}
 	},

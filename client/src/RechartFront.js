@@ -59,7 +59,7 @@ export default class RechartFront extends PureComponent {
                           <div className="sc-fWPcDo cgpajZ tokens-minted" style={{background: 'none', border: '0px solid'}}>
                              <h3 className="sc-cbDGPM eTEuVf" style={{marginBottom: '20px'}}>Tokens Minted</h3>
                              <div className="mint-cardGroup">
-                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>7,234,113,904 MOONEY</h4>
+                                <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>1 QUADRILLION MOONEY</h4>
                                 <br/>
                                 <h3 className="sc-cbDGPM eTEuVf">Expected Returns</h3>
                                 <h4 color="#FFFFFF" className="sc-gyUeRy gNiLOP" style={{fontSize: '18px'}}>Probs <span style={{color: 'red'}}>-$6.75</span> or something after our massive launch at the <i>Miami Crypto Exp</i></h4>

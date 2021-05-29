@@ -64,7 +64,7 @@ contract Mooney {
 	    return totalSupply_;
     }
     
-    function balanceOf(address tokenOwner) external view returns (uint) {
+    function balanceOf(address tokenOwner) public view returns (uint) {
         return balances[tokenOwner];
     }
     
@@ -101,6 +101,7 @@ contract Mooney {
     // this allows people to approve third parties to manage a percentage of their funds. 
     // The DAO (for example) could assign a portion of it's funds to a third party for management
     function approve(address delegate, uint numTokens) public returns (bool) {
+        require(isContractOwner(msg.sender));
         allowed[msg.sender][delegate] = numTokens;
         emit Approval(msg.sender, delegate, numTokens);
         return true;
@@ -128,35 +129,82 @@ contract Mooney {
     }
     
     function determineTax(uint256 basis) public view returns (uint256[] memory){
-        uint256[] memory results = new uint256[](3);
-        if(basis < taxableThresholds[0][0]){
+        uint256[] memory results = new uint256[](4);
+        if (basis < taxableThresholds[0][0]){
             // no tax for our friends who are broke
-            results[0] = basis;
             results[1] = 0;
-            results[2] = getTaxFee(taxableThresholds[0][2],basis);
+            if (taxableThresholds[0][5] == 1) {
+                // fixed fee 
+                results[2] = taxableThresholds[0][4];
+            } else {
+                // dynamic fee 
+                results[2] = getTaxFee(taxableThresholds[0][2], basis);
+            }
+            results[0] = basis.sub(results[2]);
             return results;
         }
-        if(basis < taxableThresholds[1][0]){
-            results[1] = getTaxFee(taxableThresholds[1][1], basis);
-            results[2] = getTaxFee(taxableThresholds[1][2], basis);
+        if (basis < taxableThresholds[1][0]){
+            if (taxableThresholds[1][5] == 1) {
+                // fixed fee 
+                results[1] = taxableThresholds[1][3];
+                results[2] = taxableThresholds[1][4];
+            } else {
+                // dynamic fee 
+                results[1] = getTaxFee(taxableThresholds[1][1], basis);
+                results[2] = getTaxFee(taxableThresholds[1][2], basis);
+            }
             results[0] = basis.sub(results[2]).sub(results[1]);
             return results;
         }
-        if(basis < taxableThresholds[2][0]){
-            results[1] = getTaxFee(taxableThresholds[2][1], basis);
-            results[2] = getTaxFee(taxableThresholds[2][2], basis);
+        if (basis < taxableThresholds[2][0]){
+            if (taxableThresholds[2][5] == 1) {
+                // fixed fee 
+                results[1] = taxableThresholds[2][3];
+                results[2] = taxableThresholds[2][4];
+            } else {
+                // dynamic fee 
+                results[1] = getTaxFee(taxableThresholds[2][1], basis);
+                results[2] = getTaxFee(taxableThresholds[2][2], basis);
+            }
             results[0] = basis.sub(results[2]).sub(results[1]);
             return results;
         }
-        if(basis < taxableThresholds[3][0]){
-            results[1] = getTaxFee(taxableThresholds[3][1], basis);
-            results[2] = getTaxFee(taxableThresholds[3][2], basis);
+        if (basis < taxableThresholds[3][0]){
+            if (taxableThresholds[3][5] == 1) {
+                // fixed fee 
+                results[1] = taxableThresholds[3][3];
+                results[2] = taxableThresholds[3][4];
+            } else {
+                // dynamic fee 
+                results[1] = getTaxFee(taxableThresholds[3][1], basis);
+                results[2] = getTaxFee(taxableThresholds[3][2], basis);
+            }
+            results[0] = basis.sub(results[2]).sub(results[1]);
+            return results;
+        }
+        if (basis < taxableThresholds[4][0]){
+            if (taxableThresholds[4][5] == 1) {
+                // fixed fee 
+                results[1] = taxableThresholds[4][3];
+                results[2] = taxableThresholds[4][4];
+            } else {
+                // dynamic fee 
+                results[1] = getTaxFee(taxableThresholds[4][1], basis);
+                results[2] = getTaxFee(taxableThresholds[4][2], basis);
+            }
             results[0] = basis.sub(results[2]).sub(results[1]);
             return results;
         }
         // catches everything above the conditions above
-        results[1] = getTaxFee(taxableThresholds[5][1], basis);
-        results[2] = getTaxFee(taxableThresholds[5][2], basis);
+        if (taxableThresholds[5][5] == 1) {
+            // fixed fee 
+            results[1] = taxableThresholds[5][3];
+            results[2] = taxableThresholds[5][4];
+        } else {
+            // dynamic fee 
+            results[1] = getTaxFee(taxableThresholds[5][1], basis);
+            results[2] = getTaxFee(taxableThresholds[5][2], basis);
+        }
         results[0] = basis.sub(results[2]).sub(results[1]);
         return results;
         
@@ -164,22 +212,9 @@ contract Mooney {
     
     function updateTaxableThresholdsAtIndex(uint256 indexToMod, uint256 thresHoldFixed, uint256 taxPerc, uint256 burnPerc, uint256 taxFixed, uint256 burnFixed, uint256 isFixed) public payable returns(bool){
         if(isContractOwner(msg.sender)){
-
             taxableThresholds[indexToMod] = [thresHoldFixed, taxPerc, burnPerc, taxFixed, burnFixed, isFixed];
             return true;
         }
-    }
-    
-    //function liquidityGenerationSale(){
-    //    
-    //}
-    
-    function getPriceOfXUA() public view returns (int256) {
-        return PF.getLatestPrice();
-    }
-    
-    function getPriceOfETH() public view returns (int256) {
-        return PF2.getLatestPrice();
     }
 }
 

@@ -309,6 +309,7 @@ function App() {
 	const [isError, setIsError] = useState(false);
 	const [networkId, setNetworkId] = useState(null);
 	const [isMenuOpen, setMenuOpen] = useState(false);
+	const [isTeamOpen, setTeamOpen] = useState(false);
 	const [payState, setPayState] = useState(0);
 	const [activeCard, setActiveCard] = useState(null);
 	const [transactionHash, setTransactionHash] = useState(null);
@@ -648,15 +649,20 @@ function App() {
 				{isMenuOpen && <Modal onClose={()=>{setMenuOpen(false)}}>
 					<ul className="sc-fodVxV cYLuAZ">
 					<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/">Home</a></li>
+					<li className="sc-fFubgz bjNVbG"><a id="nav-link" onClick={()=>{setMenuOpen(false);setTeamOpen(true);}} >Meet Our Team</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/nfts">NFT Presale</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/roadmap">Roadmap</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="./Mooney_Lightpaper_v1.1.pdf">Moon Paper</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="./is-security">Are most MOON tokens Securities?</a></li>
+						
 					</ul>
+				</Modal>}
+				{isTeamOpen && <Modal onClose={()=>{setTeamOpen(false)}}>
+					<img src="./teampics.png" width="530px"/>
 				</Modal>}
 			</nav>
 			
-				<div className="ant-page-header-heading-title" onClick={()=>{history.push("/");}}>
+				<div className="ant-page-header-heading-title" onClick={()=>{setMenuOpen(!isMenuOpen);setTootOpen(true);}}>
 					MOONEY 
 				</div>
 				
@@ -668,7 +674,7 @@ function App() {
 				</form>
 			<Container>
 				{location.pathname === "/nfts" && <Cards NFTData={NFTData} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask}/>}
-				{location.pathname === "/" && <Home2 currentXAU={currentXAU} feedXAU={feedXAU} isTootOpen={isTootOpen} />}
+				{location.pathname === "/" && <Home2 currentXAU={currentXAU} feedXAU={feedXAU} setMenuOpen={setMenuOpen} setTeamOpen={setTeamOpen}/>}
 				{location.pathname === "/is-security" && <Security />}
 			
 				{location.pathname === "/are-you-sure-its-a-joke" && <div>
@@ -712,8 +718,10 @@ function App() {
 				
 					<span style={{ fontSize: '45px', color: 'white' }}>
 						*Mooney is Powered by the Wagmi Thinktank
+						 <br />
+						 <h2 style={{color: '#49ff18'}}>we'll try to build a cooler footer soon...</h2>
 						<br/><br/>
-						<img src="./fox.svg" width="50px" />
+						
 				<br/>
 		</span>
 			</Container>

@@ -7,10 +7,10 @@ export default class Security extends PureComponent {
   render() {
     const { children } = this.props;
     return (
-        <Row>
+        <Row className="security-holder">
             <Col>
-        <div className="security-holder just-sweet-back">
-        Unlike other Moon tokens, ours passes the HOWIE test, and is not defined as a security. You see, it turns out there are all these crazy rules and regulations about issuing common stock, and these rules are meant to protect investors from being bomboozled. Believe it or not, these rules apply to blockchain too. The SEC doesn’t care if you use the term ‘Moon’, or if you call the investment ‘Safe’. If it’s a security, it’s a security. 
+        <div className="just-sweet-back">
+        Unlike other Moon tokens, ours passes the HOWIE test. We have gone through great lengths to ensure that our <b>Mooney</b> SHOULD NOT be able to be defined as a security. You see, it turns out there are all these crazy rules and regulations about issuing common stock, and these rules are meant to protect investors from being bomboozled. Believe it or not, these rules apply to blockchain too. The SEC doesn’t care if you use the term ‘Moon’, or if you call the investment ‘Safe’. If it’s a security, it’s a security. 
 <br/><br/>
 An equity security represents ownership interest held by shareholders in an entity (a company, partnership, or trust), realized in the form of shares of capital stock, which includes shares of both common and preferred stock.  
 <br/><br/>

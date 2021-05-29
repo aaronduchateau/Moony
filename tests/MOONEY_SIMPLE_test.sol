@@ -9,6 +9,7 @@ import "../contracts/MOONEY_SIMPLE.sol";
 contract TestMooney is Mooney(45000000000000000) {
     
     function beforeAll() public {
+        
     }
      
     function checkContractOwner() public {
@@ -91,9 +92,9 @@ contract TestMooney is Mooney(45000000000000000) {
         Assert.equal(result4[0] + result4[1] + result4[2], 6500,"threshold 4 adds back up");
         
         uint256[] memory result5 = determineTax(uint256(7777));
-        Assert.equal(result5[0], uint256(7161), "threshold 5 - sent amount");
-        Assert.equal(result5[1], uint256(154), "threshold 5 - burn amount");
-        Assert.equal(result5[2], uint256(462), "threshold 5 - tax amount");
+        Assert.equal(result5[0], uint256(7469), "threshold 5 - sent amount");
+        Assert.equal(result5[1], uint256(77), "threshold 5 - burn amount");
+        Assert.equal(result5[2], uint256(231), "threshold 5 - tax amount");
         
         //test that everything adds back up 
         Assert.equal(result5[0] + result5[1] + result5[2], 7777,"threshold 5 adds back up");
@@ -166,7 +167,6 @@ contract TestMooney is Mooney(45000000000000000) {
         Assert.equal(getTaxFee(9,200), 18, "7");
         Assert.equal(getTaxFee(9,333030303030300303), 29972727272727027, "8");
     }
-    
     
 
     function checkSuccess2() public pure returns (bool) {
