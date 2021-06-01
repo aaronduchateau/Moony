@@ -114,20 +114,16 @@ export default class Home2 extends PureComponent {
                 <br />
                 <br />
                 <br />
-                <Row>
-                    <Col s="12" xs="12" className="jEjURK" style={{padding: '40px'}}>
-                        
-                    <h2 style={{color: '#49ff18'}}>Our Launch Configuration:</h2>
-                        <p style={{ marginBottom: '20px', fontSize: '18px' }}>Here is an example of what our <br/>first configuration might look like at<br/> our at our <b>ShitCoin 2021 Miami</b> Token Launch, <br/> given a sample transaction size!</p>
-                        <img src="./guy2.png" className="" style={{ width: '228px',maxWidth: '228px',zIndex: -1, position: 'relative', top: '-240px', left: '-300px' }} />
-                        
-                    </Col>  
-                </Row>
-                <Row style={{ position: 'relative', top: '-660px'}}>
-                    <Col s="12" xs="12" >
-                    <img src="./samplep.png" className="pink-sample" style={{ marginTop: '260px', marginBottom: '0px'}} />
-                    </Col>
-                </Row>
+                <img src="./guy2.png" className="" style={{ width: '228px',maxWidth: '228px'}} />
+        
+                  
+                  <h2 style={{color: '#49ff18',padding: '20px'}}>Our Launch Configuration:</h2>
+                      <p style={{ marginBottom: '20px', fontSize: '18px', padding: '20px' }}>Here is an example of what our <br/>first configuration might look like at<br/> our at our <b>ShitCoin 2021 Miami</b> Token Launch, <br/> given a sample transaction size!</p>
+                      <br />
+                      <img src="./samplep.png" className="pink-sample" style={{margin: '0 auto'}}/>
+             
+                
+               
                 <Row>
                     <Col s="12" xs="12">
                     
@@ -199,9 +195,15 @@ His code throws a bunch of exceptions <br/>(but he submits the most pull request
                     </Col>
                     </Row>
 
-                <br />
-                <br />
-                <br />
+                    <Row style={{marginTop: '180px'}}>
+                    <Col s="12" xs="12">
+                    
+                        <ReactPlayer fullscreen={true} url='https://youtu.be/lzjvk6l1bKM' height={vHeight + "px"} width={vWidth + "px"} style={{margin: '0 auto', marginTop: '0px', paddingBottom: '0px', border: '15px solid black', borderRadius: '5px', backgroundColor: 'black' }}/>
+                        <img src="./mooney_logo.png" className="" style={{ width: '350px',maxWidth: '350px',zIndex: -1, position: 'relative', top: '-230px', right: '-360px' }} />
+                    </Col>  
+                </Row>
+
+                
                 <h2 style={{color: '#49ff18'}}>Project Roadmap...Maybe?</h2>
                 <img src="./roadmap.png" className="" style={{ width: '100%',maxWidth: '800px' }} />
 
