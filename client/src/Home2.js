@@ -50,6 +50,10 @@ const data = [
     },
 ];
 
+const widthMetricSmall = window.screen.width < 950;
+const vHeight = widthMetricSmall ? 250 : 400;
+const vWidth = widthMetricSmall ? 350: 610;
+
 export default class Home2 extends PureComponent {
 
     render() {
@@ -59,7 +63,7 @@ export default class Home2 extends PureComponent {
                 <Row style={{marginTop: '100px'}}>
                     <Col s="12" xs="12">
                     
-                        <ReactPlayer fullscreen={true} url='https://youtu.be/hkUi1oFYmw0' height="400px" style={{margin: '0 auto', marginTop: '0px', paddingBottom: '0px', border: '15px solid black', borderRadius: '5px', backgroundColor: 'black' }}/>
+                        <ReactPlayer fullscreen={true} url='https://youtu.be/hkUi1oFYmw0' height={vHeight + "px"} width={vWidth + "px"} style={{margin: '0 auto', marginTop: '0px', paddingBottom: '0px', border: '15px solid black', borderRadius: '5px', backgroundColor: 'black' }}/>
                         <img src="./rocket.png" className="" style={{ width: '350px',maxWidth: '350px',zIndex: -1, position: 'relative', top: '-230px', right: '-360px' }} />
                     </Col>  
                 </Row>
