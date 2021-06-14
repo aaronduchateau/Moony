@@ -2,13 +2,18 @@ import React, { useState, useEffect } from 'react';
 
 import './App.css';
 import { ethers } from "ethers";
-import PreciousChickenToken from "./contracts/PreciousChickenToken.json";
+import PreciousChickenToken from "./contracts/PreciousBuyEth.json";
+import PreciousBSCToken from "./contracts/PreciousBuyBSC.json";
 import { Button, Alert, Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home2 from './Home2';
 import Cards from './Cards';
-import Modal from './Modal'
-import Security from './Security'
+import Modal from './Modal';
+import Security from './Security';
+import Purchase from './Purchase';
+import About from './About';
+import Media from './Media';
+
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -16,6 +21,13 @@ import {
 	useHistory,
 	BrowserHistory,
   } from "react-router-dom";
+
+  const credsEx = [];
+  credsEx[1] = ['Ethereum', 'url: n/a', '1', 'ETH', 'purchase with ETH on the Ethereum network and exhange for Mooney on Binance Smart Chain (BNB) in our telegram', 'https://etherscan.io', 'Ethereum','0x7209E12bc604ef25A4476C236A458F74d2d24822'];
+  credsEx[56] = ['BSC Smart Chain', 'https://bsc-dataseed.binance.org/', '56', 'BNB', 'purchase with BNB on BSC and recieve the eq: amount of Mooney Back automatically', 'https://bscscan.com', 'Binance Smart Chain','0x500f406A2AfccCc656aA222B39F9EA00E8c8da98'];
+  credsEx[42] = ['Kovan Test Chain', 'https://kovan.infura.io', '42', 'ETH', 'purchase with ETH on the Ethereum network and exhange for Mooney on BSC in our telegram', 'https://kovan.etherscan.io', 'Kovan (Ethereum Testnet)','0xFcB17f3c083c4B7A14f7C86aB72a3251AB4Ded0C'];
+  credsEx[97] = ['BSC Test Chain', 'https://data-seed-prebsc-1-s1.binance.org:8545', '97', 'BNB', 'Test: purchase with BNB on BSC and recieve the eq: amount of Mooney Back automatically', 'https://explorer.binance.org/smart-testnet', 'BSC Testnet','0x36f10b12Dd7F8Cb91255C41248828CA71490AfcD'];
+
 
 const NFTData  = [
   {
@@ -257,7 +269,11 @@ const OWNER_ADDRESS = "0x46C52823C6cfE568b99824ae1d3201c4E6c581fC";
 
 
 // Needs to change to reflect current PreciousChickenToken address
-const contractAddress = '0xa8dC92bEeF9E5D20B21A5CC01bf8b6a5E0a51888';
+//const contractAddress = '0xa8dC92bEeF9E5D20B21A5CC01bf8b6a5E0a51888';
+//for Kovan
+//const contractAddress = '0xC8D654Dce6691996DDEF0461706463e69c804034';
+//const contractAddress = '0xe0d91a0Dd1A9528733B6F6c9f2C371c1f5bAe62e';
+//0xb61f82118D0b0343Ae1478f88096650a52681611
 
 let provider;
 let erc20;
@@ -288,7 +304,7 @@ if (typeof window.ethereum !== 'undefined' || (typeof window.web3 !== 'undefined
 }
 
 function abbrevWalAdress(sha) {
-	return '0x' + sha.slice(-3) + '...' + sha.slice(-3);
+	return sha.slice(0,6) + '...' + sha.slice(-3);
 }
 
 
@@ -313,6 +329,7 @@ function App() {
 	const [payState, setPayState] = useState(0);
 	const [activeCard, setActiveCard] = useState(null);
 	const [transactionHash, setTransactionHash] = useState(null);
+	const [contractAddress, setContractAddress] = useState('0xC8D654Dce6691996DDEF0461706463e69c804034');
 
 	const [isDownloadMetaOpen, setDownloadMetaOpen] = useState(false);
 	const [isTootOpen, setTootOpen] = useState(false);
@@ -346,6 +363,7 @@ function App() {
 		const networkIsBsc = networkId === 56;
 		//sets up testnet
 		const networkIsKoven = networkId === 42;
+		const networkIsBSCTest = networkId === 97;
 
 		
 		console.log(activeCard);
@@ -355,11 +373,12 @@ function App() {
 		if(networkIsEth || networkIsKoven){
 		price = activeCard.ethPrice;
 		}
-		if(networkIsBsc){
+		if(networkIsBsc || networkIsBSCTest){
 		price = activeCard.bnbPrice;
 		}
 
 		let ethereum = window.ethereum;
+		
 
 
 		// Request account access if needed
@@ -433,12 +452,16 @@ function App() {
 		provider = new ethers.providers.Web3Provider(window.ethereum);
 		if (provider && !signer) {
 			setSigner(provider.getSigner());
-			erc20 = new ethers.Contract(contractAddress, PreciousChickenToken.abi, signer);
+			//erc20 = new ethers.Contract(contractAddress, PreciousChickenToken.abi, signer);
+			//erc20.depositFunds({from: signer.getAddress(), gas: 3000000, value: 100}, function(err, res){});
+			
+			//console.log('this thing');
+			//console.log(erc20);
 		}
 
 		//noProviderAbort = false;
 	} catch (e) {
-		console.log('something fucked up happened');
+		console.log(e);
 	}
 
 	// Notification to user that transaction sent to blockchain
@@ -468,11 +491,39 @@ function App() {
 	if (signer) {
 		// Sets current balance of PCT for user
 		signer.getAddress().then(response => {
+			//alert('wow' + response);
+			//let contractAddress = '0xe0d91a0Dd1A9528733B6F6c9f2C371c1f5bAe62e';
+			//let awardDenomination = "ETH";
+			//if (networkId == 56) {
+			//	awardDenomination = "BNB";
+			//}
+			//if (networkId == 42) {
+			//	contractAddress = '0xe0d91a0Dd1A9528733B6F6c9f2C371c1f5bAe62e';
+			//}
+			//if (networkId == 97) {
+			//	awardDenomination = "TEST BNB";
+			//}
+			if(!credsEx[networkId]){
+				return;
+			}
+			//alert(credsEx[networkId][7]);
+			//alert(credsEx[networkId][7]);
+			let contractAbi = (networkId == 1 || networkId == 42) ? PreciousChickenToken.abi : PreciousBSCToken.abi;
+			erc20 = new ethers.Contract(credsEx[networkId][7], contractAbi, signer);
+			console.log('thissssssss');
+			console.log(console.log(erc20));
+			setContractAddress(credsEx[networkId][7]);
+			//erc20.prePurchaseOnEthNetwork({from: response, gas: 3000000, value: 100}, function(err, res){});
+			
 			setWalAddress(response);
 			window.walAddress = response;
-			return erc20.balanceOf(response);
+			//return erc20.balanceOf(response);
+			//let ethBalance = erc20.getUserEthBalance();
+			//alert(ethBalance);
+			//return ethBalance;
 		}).then(balance => {
-			setPctBal(balance.toString())
+			//alert(balance);
+			//setPctBal(balance.toString())
 		});
 
 		// Sets current balance of Eth for user
@@ -481,6 +532,7 @@ function App() {
 		}).then(balance => {
 			let formattedBalance = ethers.utils.formatUnits(balance, 18);
 			setEthBal(formattedBalance.toString())
+			//alert(formattedBalance.toString());
 			setNetworkId(signer.provider.network.chainId);
 		});
 
@@ -577,7 +629,15 @@ function App() {
 			window.ethereum.enable().then(() => {
 				provider = new ethers.providers.Web3Provider(window.ethereum);
 				setSigner(provider.getSigner());
-				erc20 = new ethers.Contract(contractAddress, PreciousChickenToken.abi, signer);
+				if(!credsEx[networkId]){
+					return;
+				}
+				//alert(credsEx[networkId][7]);
+				let contractAbi = (networkId == 1 || networkId == 42) ? PreciousChickenToken.abi : PreciousBSCToken.abi;
+				erc20 = new ethers.Contract(credsEx[networkId][7], contractAbi, signer);
+				console.log(erc20);
+				setContractAddress(credsEx[networkId][7]);
+				//erc20 = new ethers.Contract(contractAddress, PreciousChickenToken.abi, signer);
 			}
 			);
 
@@ -602,7 +662,7 @@ function App() {
 		
 		<div className={"App" + appSize}>
 			
-			{location.pathname !== "/" && <div className="moon-back"/>}
+			{location.pathname !== "/" && location.pathname !==  "/about" && <div className="moon-back"/>}
 			{isDownloadMetaOpen && <Modal onClose={()=>{setPayState(0)}}>
 				<h2>It looks like you don't<br/> have fox powers yet</h2>
 				<img src="./fox.svg" width="200px" />
@@ -644,12 +704,13 @@ function App() {
 			<header className="App-header">
 			<nav className="sc-bqyKva ehfErK">
 				<div onClick={()=>{setMenuOpen(!isMenuOpen);setTootOpen(true);}} className="menu-trig">
-				<div className="toot-holder"> <img src={isTootOpen ? './toot_over.png' : './toot_under.png'} className="toot-img"/></div>
+				<div className="toot-holder"> <img src={isTootOpen ? './toot_over.png' : './toot_under.png'} className="toot-img"/><br/><img src={"./beta.png"} width="104px" style={{marginTop: "-93px",marginLeft: "-45px",}}/> </div>
 				</div>
 				{isMenuOpen && <Modal onClose={()=>{setMenuOpen(false)}}>
 					<ul className="sc-fodVxV cYLuAZ">
 					<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/">Home</a></li>
 					<li className="sc-fFubgz bjNVbG"><a id="nav-link" onClick={()=>{setMenuOpen(false);setTeamOpen(true);}} >Meet Our Team</a></li>
+					<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/media">Mooney Media</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/nfts">NFT Presale</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="/roadmap">Roadmap</a></li>
 						<li className="sc-fFubgz bjNVbG"><a id="nav-link" href="./Mooney_Lightpaper_v1.1.pdf">Moon Paper</a></li>
@@ -663,12 +724,17 @@ function App() {
 			</nav>
 			
 				<div className="ant-page-header-heading-title" onClick={()=>{setMenuOpen(!isMenuOpen);setTootOpen(true);}}>
-					MOONEY 
+					MOONEY
+					
 				</div>
 				
 				<form onSubmit={handleConnectSubmit}>
 					<span className="connect-button-holder">
-						{appSize && abbrevWalAdress(walAddress)}
+						{appSize && <div>
+							{abbrevWalAdress(walAddress)}<br/>
+							{networkId && <img src={"./cn" + networkId +".png"} width="162px" style={{marginTop: "-53px"}}/>}
+
+							</div>}
 						{!appSize && <Button type="submit" className="connect-button">Connect MetaMask</Button>}
 					</span>
 				</form>
@@ -676,6 +742,11 @@ function App() {
 				{location.pathname === "/nfts" && <Cards NFTData={NFTData} handleConnectSubmit={handleConnectSubmit} networkId={networkId} payWithMetamask={payWithMetamask}/>}
 				{location.pathname === "/" && <Home2 currentXAU={currentXAU} feedXAU={feedXAU} setMenuOpen={setMenuOpen} setTeamOpen={setTeamOpen}/>}
 				{location.pathname === "/is-security" && <Security />}
+				{location.pathname === "/about" && <About currentXAU={currentXAU} feedXAU={feedXAU} setMenuOpen={setMenuOpen} setTeamOpen={setTeamOpen}/>}
+				{location.pathname === "/media" && <Media />}
+				{location.pathname === "/purchase" && !erc20 && <div className="justify-content-md-center sc-hjWSAi jEjURK" style={{marginTop: '100px'}}><h1 style={{color: '#f007df'}}><br/>Please connect to an<br/> account on the <br/>BSC network <br/>by connecting to MetaMask <br/>using the button above</h1><br/><br/></div>}
+
+				{location.pathname === "/purchase" && erc20 && <Purchase purchaseEthersContract={erc20} myAddress={walAddress} contractAddress={contractAddress} abbrevWalAdress={abbrevWalAdress} networkId={networkId} credsEx={credsEx}/>}
 			
 				{location.pathname === "/are-you-sure-its-a-joke" && <div>
 					<br/><br/><br/>
@@ -716,10 +787,39 @@ function App() {
 				<br/>
 
 				
-					<span style={{ fontSize: '45px', color: 'white' }}>
+					
+		{location.pathname !== "/purchase" && <Row className="justify-content-md-center sc-hjWSAi jEjURK" style={{marginTop: "60px"}}>
+                
+                <Col md="12" s="12" xs="12"><h2 style={{padding: '30px'}}>The Liquidity Generation Event is Live!</h2></Col>
+              
+           
+                    <Col md="auto" s="12" xs="12">
+                        <div className="gold-text-right" style={{marginTop: '30px', backgroundImage: 'url("bhole.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
+                            <div className="gold-text-right-title">
+          </div>
+          <img src="./cn1.png" className=""  style={{width: '200px', transform: 'rotate(10deg)'}}/>
+                            <br /> <br /> <br />
+          </div>
+                    </Col>
+                    <Col md="auto" s="12" xs="12"> 
+                    <div className="gold-text-right-title" style={{transform: 'rotate(5deg)'}}>
+                                Ready to get Some?
+          </div>                       
+          <Button className="front-buy-button-7 shake" href="./purchase" onClick={() => {  }} style={{transform: 'rotate(20deg)'}}>How to Get Mooney Now</Button> <br /> <br /> <br />
+
+          <br/>
+          <img src="./cn56.png" className=""  style={{width: '200px', transform: 'rotate(30deg)', marginTop: '-90px'}}/>
+
+
+                            <br />
+
+                    </Col>
+                    </Row>}
+					<br /><br /><br /><br /><br /><br /><br />
+					<span style={{ fontSize: '15px', color: 'white' }}>
 						*Mooney is Powered by the Wagmi Thinktank
 						 <br />
-						 <h2 style={{color: '#49ff18'}}>we'll try to build a cooler footer soon...</h2>
+						 <h2 style={{color: '#49ff18', fontSize: '15px'}}>we'll try to build a cooler footer soon...</h2>
 						<br/><br/>
 						
 				<br/>

@@ -3,10 +3,10 @@
 pragma solidity >=0.4.22 <0.9.0;
 import "remix_tests.sol"; // this import is automatically injected by Remix.
 import "remix_accounts.sol";
-import "../contracts/MOONEY_SIMPLE.sol";
+import "../contracts/MooneyFinal.sol";
 
 // File name has to end with '_test.sol', this file can contain more than one testSuite contracts
-contract TestMooney is Mooney(45000000000000000) {
+contract TestMooney is Mooney(45000000000000000, 0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526) {
     
     function beforeAll() public {
         

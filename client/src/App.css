@@ -4,6 +4,56 @@ body {
   text-align: center;
 }
 
+
+.shake {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.rotateHolder {
+  box-shadow: 0px 0px 35px 35px #ff00ed;
+  border: 1px solid black;
+  border-radius: 50% 50%;
+  width: 165px;
+  height: 165px;
+  padding-top: 6px;
+  margin: 0 auto;
+  
+}
+.rotate {
+  animation: rotation 4s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.smallPurchaseTable {
+  border: 1px solid white !important;
+  padding: 2px;
+  line-height: 13px;
+  text-align: left;
+}
+
 .App {
   text-align: center;
   font-family: "Barlow",sans-serif;
@@ -290,6 +340,13 @@ box-shadow: -140px  27px 50px 50px #FF00ED;
   
 }
 
+.front-buy-button-7 {
+  font-size: 26px !important;
+  -webkit-box-shadow: -47px 17px 60px 40px #72fd68; 
+box-shadow: -47px  17px 60px 40px #72fd68;
+  
+}
+
 .security-holder {
   margin-top: 100px;
 }
@@ -325,6 +382,25 @@ box-shadow: 0px 0px 35px 35px #ff00ed;
   text-align: right;
 }
 
+.grid-icon-holder{
+ font-size: 70px;
+ margin: 0 auto;
+ padding: 20px;
+ opacity: .8;
+}
+.grid-icon-holder:hover {
+  color:#fff;
+  text-shadow:5px 5px 20px pink, 1px 1px 20px purple;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.grid-text-holder {
+font-size: 14px;
+font-weight: bold;
+width: 160px;
+}
+
 
 
 .large-policy-maker:focus-visible{
@@ -333,6 +409,11 @@ box-shadow: 0px 0px 35px 35px #ff00ed;
 
 .large-policy-maker{
   padding-right: 20px;
+}
+
+.largest-policy-maker{
+  max-width: 360px;
+  width: 360px;
 }
 
 .colorBump input{
@@ -446,34 +527,7 @@ text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 3
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
   
-  @font-face {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    src: url(/static/media/roboto-v20-latin-regular.e464241b.eot);
-    src: local(""), url(/static/media/roboto-v20-latin-regular.e464241b.eot) format("embedded-opentype"), url(/static/media/roboto-v20-latin-regular.176f8f5b.woff2) format("woff2"), url(/static/media/roboto-v20-latin-regular.49ae34d4.woff) format("woff"), url(/static/media/roboto-v20-latin-regular.127ea449.ttf) format("truetype"), url(/static/media/roboto-v20-latin-regular.4f862c8b.svg) format("svg");
-  }
-  @font-face {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 500;
-    src: url(/static/media/roboto-v20-latin-500.59a26cdb.eot);
-    src: local(""), url(/static/media/roboto-v20-latin-500.59a26cdb.eot) format("embedded-opentype"), url(/static/media/roboto-v20-latin-500.f5b74d7f.woff2) format("woff2"), url(/static/media/roboto-v20-latin-500.cea99d3e.woff) format("woff"), url(/static/media/roboto-v20-latin-500.abcf7cd8.ttf) format("truetype"), url(/static/media/roboto-v20-latin-500.4e7fe004.svg) format("svg");
-  }
-  @font-face {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 700;
-    src: url(/static/media/roboto-v20-latin-700.ba38a9cf.eot);
-    src: local(""), url(/static/media/roboto-v20-latin-700.ba38a9cf.eot) format("embedded-opentype"), url(/static/media/roboto-v20-latin-700.c18ee39f.woff2) format("woff2"), url(/static/media/roboto-v20-latin-700.2267169e.woff) format("woff"), url(/static/media/roboto-v20-latin-700.24b17813.ttf) format("truetype"), url(/static/media/roboto-v20-latin-700.4e7fe004.svg) format("svg");
-  }
-  @font-face {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 900;
-    src: url(/static/media/roboto-v20-latin-900.f930b75b.eot);
-    src: local(""), url(/static/media/roboto-v20-latin-900.f930b75b.eot) format("embedded-opentype"), url(/static/media/roboto-v20-latin-900.870c8c14.woff2) format("woff2"), url(/static/media/roboto-v20-latin-900.bac8362e.woff) format("woff"), url(/static/media/roboto-v20-latin-900.2d00e856.ttf) format("truetype"), url(/static/media/roboto-v20-latin-900.117624e9.svg) format("svg");
-  }
+  
   @font-face {
     font-family: "Open Sans";
     line-height: 150%;

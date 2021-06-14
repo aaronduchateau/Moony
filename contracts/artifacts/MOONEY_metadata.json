@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.6.12+commit.27d51765"
+		"version": "0.6.7+commit.b8d736ae"
 	},
 	"language": "Solidity",
 	"output": {
@@ -11,6 +11,11 @@
 						"internalType": "uint256",
 						"name": "startingBalance",
 						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "chainLinkAggregatorAddress",
+						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -45,6 +50,93 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "one",
+						"type": "uint256"
+					}
+				],
+				"name": "BroadcastUserBalance",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "one",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "two",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "three",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "four",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "five",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "six",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "seven",
+						"type": "uint256"
+					}
+				],
+				"name": "CalcAndSent",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "msgVal",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "DAO_address",
+						"type": "address"
+					}
+				],
+				"name": "Recieved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "from",
@@ -65,19 +157,6 @@
 				],
 				"name": "Transfer",
 				"type": "event"
-			},
-			{
-				"inputs": [],
-				"name": "PF",
-				"outputs": [
-					{
-						"internalType": "contract ConsumesPriceReferenceXUA_CL",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			},
 			{
 				"inputs": [],
@@ -156,7 +235,7 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -205,6 +284,45 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getCurrentPrePurchaseTargetMarketCap",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getNumberOfWeiInDollar",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPriceOfETH",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -229,6 +347,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getUserEthBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -237,6 +368,25 @@
 					}
 				],
 				"name": "isContractOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "potentialOwner",
+						"type": "address"
+					}
+				],
+				"name": "isLiquidityContractOwner",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -258,6 +408,106 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "prePurchaseOnEthNetwork",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountToBurn",
+						"type": "uint256"
+					}
+				],
+				"name": "setAmountToBurn",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountToMint",
+						"type": "uint256"
+					}
+				],
+				"name": "setAmountToMint",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newTargetMC",
+						"type": "uint256"
+					}
+				],
+				"name": "setCurrentPrePurchaseTargetMarketCap",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "toggleBool",
+						"type": "bool"
+					}
+				],
+				"name": "setDefaultBurnOnTransaction",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -414,19 +664,15 @@
 			}
 		],
 		"devdoc": {
-			"kind": "dev",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		},
 		"userdoc": {
-			"kind": "user",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		}
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/MOONEY_SIMPLE.sol": "Mooney"
+			"contracts/MooneyFinal.sol": "Mooney"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -442,31 +688,23 @@
 	"sources": {
 		"@chainlink/contracts/src/v0.6/interfaces/AggregatorInterface.sol": {
 			"keccak256": "0xbd2b9524ed06f150fefaf4ea600fa8b426d644f17c9f7ddd6d793c19557c23ca",
-			"license": "MIT",
 			"urls": [
 				"bzz-raw://32e224693884f94929ab3128a1f780c517c8c294634f7f0ef56b411131fa9858",
 				"dweb:/ipfs/QmYC99ZwJoPRSmBGV69uwQwdotVcGYC2AMUjLnS48PYiXq"
 			]
 		},
-		"contracts/ConsumesPriceReferenceETH_CL.sol": {
-			"keccak256": "0x979fabebd446a574b1168fd8ac7541171aa4e242974ee5555f82b4bf38c362c2",
+		"contracts/ConsumesPriceReferenceETHfinal.sol": {
+			"keccak256": "0x7520bf10d21d1762cf14121b8bb06e63172505b08367a2e6d748572829f2df3e",
 			"urls": [
-				"bzz-raw://648b08dd09a4022548a67a47c20b85056ddbe31844b8833ebd838d016a06521b",
-				"dweb:/ipfs/QmPmBUzqrcj51cAaWGBqYjVf9b3DNJhb4qhAzdn8KETuWs"
+				"bzz-raw://4fd7d39196cd890e7df12a2fa3ca2579dc15ca33a3dccfdd5477e1bc8a1a80c1",
+				"dweb:/ipfs/QmStX4hxm6g5CJzZwTnpSBZUhSU1Rbrzz7jQEc594dyH6e"
 			]
 		},
-		"contracts/ConsumesPriceReferenceXUA_CL.sol": {
-			"keccak256": "0xf0070adb00b2b64ce7bf66200f4062d3de7435feb8b124764a651b49be1d1994",
+		"contracts/MooneyFinal.sol": {
+			"keccak256": "0x0d7d25e467225f63153ae100395261b4df0578ccec8917697746415342eb3632",
 			"urls": [
-				"bzz-raw://8e90b84fa03903cdd818b7d1b63fb2890e3e5950d1cfd9d9cd600aa16354e4fb",
-				"dweb:/ipfs/QmWVDDn7HnCou45Gi8VpTkfNe9DxnBtuYiByU5JLVg51Gi"
-			]
-		},
-		"contracts/MOONEY_SIMPLE.sol": {
-			"keccak256": "0xa8c4d9294c8804287a236a397b82d097727719b73fe6906962698f22951a62f6",
-			"urls": [
-				"bzz-raw://6f4441ca2f068fb07b14c026d72af2d9402250369e8bee056d91e30b9178f2ce",
-				"dweb:/ipfs/QmbhcSVpyVCVb9kvBcs6H6gvTPWyXJADtxokCfQc6MNi8p"
+				"bzz-raw://b03a67b1e6147ad4d173292db9db21adbf2e940168ecf21c8a4b4646ae2b61cc",
+				"dweb:/ipfs/QmZgmtwd5xgLgJANAWxDHwgZ4QqiNmGBEgJmUKixE5DTiz"
 			]
 		}
 	},

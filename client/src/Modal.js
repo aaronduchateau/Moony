@@ -5,11 +5,11 @@ import Confetti from 'react-confetti';
 export default class Modal extends PureComponent {
 
   render() {
-    const { children, onClose, conffetti } = this.props;
+    const { children, onClose, conffetti, cantClose } = this.props;
     return (
-      <div id="myModal" className="modal-small" style={{overflowY: 'hidden'}}>
-        <div className="modal-content-small">
-          <span className="close-small" onClick={onClose}>&times;</span>
+      <div id="myModal" className="modal-small" style={{overflowY: 'hidden'}} onClick={onClose}>
+        <div className="modal-content-small" onClick={(event)=>{event.stopPropagation();}}>
+          {!cantClose && <span className="close-small" onClick={onClose}>&times;</span>}
             <div>
                 {children}
             </div>

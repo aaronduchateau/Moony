@@ -491,7 +491,7 @@ const Policy = (props) => {
                             <div style={{ marginBottom: '5px', marginTop: '15px' }} >Transaction Amount:</div>
                             <div className={classes.textField}>
                                 <input
-                                    id="standard-full-width"
+                                    id="standard-full-width-1"
                                     label="Example Transaction Amount"
                                     style={{ textAlign: 'right' }}
                                     margin="dense"

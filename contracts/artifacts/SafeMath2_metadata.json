@@ -1,0 +1,54 @@
+{
+	"compiler": {
+		"version": "0.6.7+commit.b8d736ae"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MooneyFinal.sol": "SafeMath2"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts/src/v0.6/interfaces/AggregatorInterface.sol": {
+			"keccak256": "0xbd2b9524ed06f150fefaf4ea600fa8b426d644f17c9f7ddd6d793c19557c23ca",
+			"urls": [
+				"bzz-raw://32e224693884f94929ab3128a1f780c517c8c294634f7f0ef56b411131fa9858",
+				"dweb:/ipfs/QmYC99ZwJoPRSmBGV69uwQwdotVcGYC2AMUjLnS48PYiXq"
+			]
+		},
+		"contracts/ConsumesPriceReferenceETHfinal.sol": {
+			"keccak256": "0x7520bf10d21d1762cf14121b8bb06e63172505b08367a2e6d748572829f2df3e",
+			"urls": [
+				"bzz-raw://4fd7d39196cd890e7df12a2fa3ca2579dc15ca33a3dccfdd5477e1bc8a1a80c1",
+				"dweb:/ipfs/QmStX4hxm6g5CJzZwTnpSBZUhSU1Rbrzz7jQEc594dyH6e"
+			]
+		},
+		"contracts/MooneyFinal.sol": {
+			"keccak256": "0x0d7d25e467225f63153ae100395261b4df0578ccec8917697746415342eb3632",
+			"urls": [
+				"bzz-raw://b03a67b1e6147ad4d173292db9db21adbf2e940168ecf21c8a4b4646ae2b61cc",
+				"dweb:/ipfs/QmZgmtwd5xgLgJANAWxDHwgZ4QqiNmGBEgJmUKixE5DTiz"
+			]
+		}
+	},
+	"version": 1
+}
