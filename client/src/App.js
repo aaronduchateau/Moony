@@ -13,6 +13,7 @@ import Security from './Security';
 import Purchase from './Purchase';
 import About from './About';
 import Media from './Media';
+import Admin from './Admin';
 
 import {
 	BrowserRouter as Router,
@@ -744,9 +745,10 @@ function App() {
 				{location.pathname === "/is-security" && <Security />}
 				{location.pathname === "/about" && <About currentXAU={currentXAU} feedXAU={feedXAU} setMenuOpen={setMenuOpen} setTeamOpen={setTeamOpen}/>}
 				{location.pathname === "/media" && <Media />}
-				{location.pathname === "/purchase" && !erc20 && <div className="justify-content-md-center sc-hjWSAi jEjURK" style={{marginTop: '100px'}}><h1 style={{color: '#f007df'}}><br/>Please connect to an<br/> account on the <br/>BSC network <br/>by connecting to MetaMask <br/>using the button above</h1><br/><br/></div>}
-
+				{location.pathname === "/purchase" && !erc20 && <div className="justify-content-md-center sc-hjWSAi jEjURK" style={{marginTop: '100px'}}><h1 style={{color: '#f007df'}}><br/>Please connect to an<br/> account on the <br/>BSC network <br/>by connecting to MetaMask <br/>using the button above. If on Mobile use the Metmask Browser to connect.</h1><br/><br/></div>}
 				{location.pathname === "/purchase" && erc20 && <Purchase purchaseEthersContract={erc20} myAddress={walAddress} contractAddress={contractAddress} abbrevWalAdress={abbrevWalAdress} networkId={networkId} credsEx={credsEx}/>}
+				{location.pathname === "/Admin" && erc20 && <Admin purchaseEthersContract={erc20} myAddress={walAddress} contractAddress={contractAddress} abbrevWalAdress={abbrevWalAdress} networkId={networkId} credsEx={credsEx}/>}
+
 			
 				{location.pathname === "/are-you-sure-its-a-joke" && <div>
 					<br/><br/><br/>
